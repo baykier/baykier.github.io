@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>部署 on Baykier的鱼塘</title>
+    <link>https://baykier.github.io/homepage/tags/%E9%83%A8%E7%BD%B2/</link>
+    <description>Recent content in 部署 on Baykier的鱼塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 05 Jun 2017 10:00:36 +0800</lastBuildDate>
+    <atom:link href="https://baykier.github.io/homepage/tags/%E9%83%A8%E7%BD%B2/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>homepage 的自动部署</title>
+      <link>https://baykier.github.io/homepage/post/auto_deploy/</link>
+      <pubDate>Mon, 05 Jun 2017 10:00:36 +0800</pubDate>
+      
+      <guid>https://baykier.github.io/homepage/post/auto_deploy/</guid>
+      <description>
+
+&lt;h1 id=&#34;homepage自动部署:6aeacf3a3830a0313934c0e34cc156d6&#34;&gt;homepage自动部署&lt;/h1&gt;
+
+&lt;h2 id=&#34;背景:6aeacf3a3830a0313934c0e34cc156d6&#34;&gt;背景&lt;/h2&gt;
+
+&lt;p&gt;首先交代一下背景，俺的博客是基于hugo的生成静态站点，代码放在github上面 对于&lt;a href=&#34;https://gohugo.io/&#34;&gt;hugo&lt;/a&gt;
+和&lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt;不是很了解的同学可以去了解一下。&lt;/p&gt;
+
+&lt;p&gt;下面是我写博客的大概流程:&lt;/p&gt;
+
+&lt;p&gt;1.在自己的个人电脑上写博客，用hugo生成静态站点测试无误后推送到github&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# 新增博客
+  hugo new post/&amp;lt;some_title&amp;gt;.md
+# 用编辑器编辑并测试
+  hugo server -w
+
+# 生成静态站点
+  hugo
+#推送到github
+  git push origin master
+  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.在服务器上面拉取更新站点&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /path/to/site
+git pull origin master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;经过上面的分析可以看出，对于服务器端的每次拉取可以写成一个脚本，利用github的hook机制，这样每次写完博客
+测试ok直接推送就行了，省去每次登录服务器，再&lt;code&gt;git pull&lt;/code&gt;的操作，这样岂不美哉！&lt;/p&gt;
+
+&lt;h2 id=&#34;自动部署脚本原理:6aeacf3a3830a0313934c0e34cc156d6&#34;&gt;自动部署脚本原理&lt;/h2&gt;
+
+&lt;p&gt;其实对于这个机智(偷懒)的想法早就有了，直到昨天下午有时间，才完善了一下。网上有很多类似的代码，实现原理
+大同小异,都是根据github的hook机制,需要注意的就是安全方面，具体流程如下面:&lt;/p&gt;
+
+&lt;p&gt;1.博客更新推送到github&lt;/p&gt;
+
+&lt;p&gt;2.github推送webhook到url&lt;/p&gt;
+
+&lt;p&gt;3.url里面验证推送的来源(确保安全),执行代码拉取完成更新&lt;/p&gt;
+
+&lt;h2 id=&#34;编写php脚本-因为php是最好的语言么:6aeacf3a3830a0313934c0e34cc156d6&#34;&gt;编写php脚本(因为php是最好的语言么)&lt;/h2&gt;
+
+&lt;p&gt;代码可以在这里找到&lt;a href=&#34;https://github.com/baykier/homepage/blob/master/froyo.cc/public/index.php&#34;&gt;homepage自动部署脚本&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+/**
+ * homepage 自动更新脚本
+ */
+
+/**
+ * CSV 软件 Git
+ */
+define(&#39;CSV_SOFT&#39;,&#39;git&#39;);
+/**
+ * HASH for github.com
+ */
+define(&#39;HASH&#39;,&#39;59341c1092c47&#39;);
+define(&#39;ROOT_PATH&#39;,dirname(dirname(__DIR__)));
+define(&#39;LOG_FILE&#39;,ROOT_PATH .&#39;/git-auto-pull.log&#39;);
+
+/**
+ * 获取上次命令的状态
+ * echo $?
+ * @return int
+ */
+function getShellStatus()
+{
+    return (int) shell_exec(&#39; echo @?&#39;);
+}
+$hash = isset($_GET[&#39;hash&#39;]) ? trim($_GET[&#39;hash&#39;]) : &#39;&#39;;
+
+if ($hash != HASH)
+{
+    header(&#39;HTTP/1.0 403 Forbidden&#39;);
+    exit(&#39;Forbidden&#39;);
+}
+
+chdir(ROOT_PATH);
+shell_exec(sprintf(&amp;quot;echo git auto pull time is %s &amp;gt;&amp;gt; %s&amp;quot;,date(&#39;Y-m-d H:i:s&#39;),LOG_FILE));
+shell_exec(sprintf(&amp;quot;git pull origin master &amp;gt;&amp;gt; %s 2&amp;gt;&amp;amp;1 &amp;amp;&amp;quot;,LOG_FILE));
+shell_exec(sprintf(&amp;quot;echo git pull status is %s &amp;gt;&amp;gt; %s \n&amp;quot;,getShellStatus(),LOG_FILE));
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;安装方面可以参考这里&lt;a href=&#34;https://laravel-china.org/topics/2192/centos-under-the-use-of-webhook-to-achieve-automatic-deployment-php&#34;&gt;CentOS 下利用 webhook 实现自动部署（PHP）&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;相关参考:6aeacf3a3830a0313934c0e34cc156d6&#34;&gt;相关参考&lt;/h2&gt;
+
+&lt;p&gt;1.如果需要部署项目，可能就需要用到自动部署工具了 php的有两个&lt;a href=&#34;https://deployer.org/&#34;&gt;deploy&lt;/a&gt;和&lt;a href=&#34;http://rocketeer.autopergamene.eu/&#34;&gt;rocketeer&lt;/a&gt;
+它们都用到了git&lt;/p&gt;
+
+&lt;p&gt;2.&lt;a href=&#34;https://www.ansible.com/&#34;&gt;ansible&lt;/a&gt;不仅仅用于自动部署还用于管理集群&lt;/p&gt;
+
+&lt;p&gt;3.&lt;a href=&#34;https://developer.github.com/webhooks/&#34;&gt;webhooks&lt;/a&gt;github官方说明&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

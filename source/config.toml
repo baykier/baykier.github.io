@@ -1,0 +1,12 @@
+baseurl = "https://baykier.github.io/"
+languageCode = "zh-cn"
+title = "Baykier的鱼塘"
+relativeURLs = true
+publishdir = "../"
+[Params]
+github = "https://github.com/baykier"
+showsRSS = true
+profile = "/images/lavatar.png"
+copyright = "Written by Baykier"
+
+

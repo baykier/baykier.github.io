@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <link rel="shortcut icon" href="../../images/favicon.ico"/>
+  
+  <meta charset="UTF-8">
+  <title>
+    ubuntu 代理设置 | Baykier的鱼塘
+  </title>
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="https://baykier.github.io/homepage/post/vagrant_proxy/"/>
+
+  
+  <link rel="stylesheet" href="../../css/sanitize.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <link rel="stylesheet" href="../../css/highlight_monokai.css">
+  <link rel="stylesheet" href="../../css/theme.css">
+  <link rel="stylesheet" href="../../css/custom.css">
+  
+  
+  <link href="https://baykier.github.io/homepage/index.xml" rel="alternate" type="application/rss+xml" title="Baykier的鱼塘" />
+  <link href="https://baykier.github.io/homepage/index.xml" rel="feed" type="application/rss+xml" title="Baykier的鱼塘" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container" >
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="https://baykier.github.io/homepage/">Baykier的鱼塘</a></h1>
+        
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          <li><a href="https://baykier.github.io/homepage/about" target="_blank">about</a></li>
+          
+          
+          <li><a href="https://github.com/baykier" target="_blank">GitHub</a></li>
+          <li><a href="https://baykier.github.io/homepage/index.xml" type="application/rss+xml" target="_blank">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  
+  <main id="single" role="main">
+    <div class="article-header">
+      <h3>ubuntu 代理设置</h3>
+      <div class="meta">
+        Jun 2, 2017 &nbsp;
+        
+          <a href="../../tags/vagrant">vagrant</a>&nbsp;
+        
+          <a href="../../tags/proxy%E8%AE%BE%E7%BD%AE">proxy设置</a>&nbsp;
+        
+      </div>
+    </div>
+    <article>
+      
+
+<h1 id="vagrant开发机代理设置:5b735787802065cce05b01e0d4930b4f">vagrant开发机代理设置</h1>
+
+<p>在学习工作中使用<a href="https://www.vagrantup.com/">vagrant</a>作为开发环境已经有很长一段时间了，使用ubuntu
+作为开发系统 在使用中发现，即使修改了apt的source.list源文件，在面对一些开发中需要的软件工具的时候，不可
+避免的还是会遇到卡顿的问题，于是就查了一下资料，修改apt的proxy代理，来加快速度，最后又把git的也修改了</p>
+
+<h2 id="apt-git-npm-composer-等使用遇到的问题:5b735787802065cce05b01e0d4930b4f">apt git npm composer 等使用遇到的问题</h2>
+
+<p>apt git npm composer 由于GFW的存在，对于国内的程序员来说，经常卡住不动，无法使用，即使有镜像源，但由于存在
+同步更新的问题，不能及时解决，所以需要进行proxy设置</p>
+
+<h2 id="设置proxy:5b735787802065cce05b01e0d4930b4f">设置proxy</h2>
+
+<p>1.git</p>
+
+<pre><code>	git config --global http.proxy &lt;your proxy ip&gt;:&lt;your proxy port&gt;
+	git config --global https.proxy &lt;your proxyip&gt;:&lt;your proxy port&gt;
+	
+	# socks
+	git config --global http.proxy socks5h://&lt;your proxy ip&gt;:&lt;your proxy port&gt;
+	git config --global https.proxy socks5h://&lt;your proxy ip&gt;:&lt;your proxy port&gt;
+</code></pre>
+
+<p>参考<a href="https://gist.github.com/laispace/666dd7b27e9116faece6">git proxy setting</a></p>
+
+<p>2.apt</p>
+
+<pre><code> sudo echo 'Acquire::http::Proxy &quot;http://&lt;your proxy ip&gt;:&lt;your proxy port&gt;&quot;;' &gt;&gt; /etc/apt/apt.conf
+ sudo apt update 
+ #下面可以体验飞一般的感觉了
+ sudo apt install &lt;some packages&gt;
+ ...
+</code></pre>
+
+<p>参考<a href="https://askubuntu.com/questions/257290/configure-proxy-for-apt">apt proxy setting</a></p>
+
+<p>3.npm</p>
+
+<pre><code> npm config set proxy http://&lt;your proxy ip&gt;:&lt;your proxy port&gt;
+ npm config set proxy-https https://&lt;your proxy ip&gt;:&lt;your proxy port&gt;
+</code></pre>
+
+<p>参考<a href="https://stackoverflow.com/questions/25660936/using-npm-behind-corporate-proxy-pac">npm proxy setting</a></p>
+
+<p>4.composer</p>
+
+<p>方法一:</p>
+
+<pre><code>composer config -g repo.packagist composer https://packagist.phpcomposer.com
+</code></pre>
+
+<p>参考<a href="https://pkg.phpcomposer.com/">composer中国镜像</a></p>
+
+<p>方法二:</p>
+
+<pre><code>export HTTP_PROXY=http://&lt;your proxy ip&gt;:&lt;your proxy port&gt;
+export HTTPS_PROXY=http://&lt;your proxy ip&gt;:&lt;your proxy port&gt;
+</code></pre>
+
+<p>上面这种方法临时用一下，每次登录terminal之后需要重新设置，如果不想每次设置，可以保存在<code>~/.profile</code>中</p>
+
+<pre><code>echo &quot;# proxy setting&quot; &gt;&gt; ~/.profile
+echo &quot;export HTTP_PROXY='http://&lt;your proxy ip&gt;:&lt;your proxy port&gt;'&quot; &gt;&gt; ~/.profile
+echo &quot;export HTTPS_PROXY='https://&lt;your proxy ip&gt;:&lt;your proxy port&gt;'&quot; &gt;&gt; ~/.profile
+source ~/.profile
+
+</code></pre>
+
+<h2 id="实际效果:5b735787802065cce05b01e0d4930b4f">实际效果</h2>
+
+<p>git npm apt composer 快了不是一点点 :) !</p>
+
+      
+      
+      
+    </article>
+    
+
+
+  </main>
+  
+  <nav class="pagination-single">
+    
+      <span class="previous">&larr; <a href="https://baykier.github.io/homepage/post/about_self_study/" rel="prev">关于自学能力</a></span>
+    
+    
+      <span class="next"><a href="https://baykier.github.io/homepage/post/auto_deploy/" rel="next">homepage 的自动部署</a> &rarr;</span>
+    
+  </nav>
+
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      <img src="../../images/lavatar.png" width="64" height="64"><br>
+      Written by Baykier
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="../../js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>
+

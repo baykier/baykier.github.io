@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <link rel="shortcut icon" href="../../images/favicon.ico"/>
+  
+  <meta charset="UTF-8">
+  <title>
+    php file_get_contents() 函数代理设置 | Baykier的鱼塘
+  </title>
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="https://baykier.github.io/homepage/post/php_proxy_file_get_contents/"/>
+
+  
+  <link rel="stylesheet" href="../../css/sanitize.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <link rel="stylesheet" href="../../css/highlight_monokai.css">
+  <link rel="stylesheet" href="../../css/theme.css">
+  <link rel="stylesheet" href="../../css/custom.css">
+  
+  
+  <link href="https://baykier.github.io/homepage/index.xml" rel="alternate" type="application/rss+xml" title="Baykier的鱼塘" />
+  <link href="https://baykier.github.io/homepage/index.xml" rel="feed" type="application/rss+xml" title="Baykier的鱼塘" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container" >
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="https://baykier.github.io/homepage/">Baykier的鱼塘</a></h1>
+        
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          <li><a href="https://baykier.github.io/homepage/about" target="_blank">about</a></li>
+          
+          
+          <li><a href="https://github.com/baykier" target="_blank">GitHub</a></li>
+          <li><a href="https://baykier.github.io/homepage/index.xml" type="application/rss+xml" target="_blank">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  
+  <main id="single" role="main">
+    <div class="article-header">
+      <h3>php file_get_contents() 函数代理设置</h3>
+      <div class="meta">
+        Jun 21, 2017 &nbsp;
+        
+          <a href="../../tags/php">php</a>&nbsp;
+        
+      </div>
+    </div>
+    <article>
+      
+
+<h2 id="php-file-get-contents-函数代理设置:0ecdfed02ee323a68deeb02f7b8b82cf">php file_get_contents() 函数代理设置</h2>
+
+<h3 id="遇到的问题:0ecdfed02ee323a68deeb02f7b8b82cf">遇到的问题</h3>
+
+<p>昨天在使用file_get_contents()函数抓取图片内容的时候，出现超时的情况，而且图片无法获取到
+据猜测，是网络的问题，有可能被GFW河蟹了，于是登上我的服务器测试一下，发现在服务器可以正常打开。
+所以想到了如何给file_get_contents()函数设置代理,记录下来</p>
+
+<h3 id="file-get-contents-代理设置:0ecdfed02ee323a68deeb02f7b8b82cf">file_get_contents()代理设置</h3>
+
+<p>下面摘自file_get_content()的<a href="http://php.net/manual/en/function.file-get-contents.php">php官方手册</a></p>
+
+<pre><code>string file_get_contents ( string $filename [, bool $use_include_path = false [, resource $context [, int $offset = 0 [, int $maxlen ]]]] )
+</code></pre>
+
+<p>其中，第三个参数<strong>context</strong>就是一个上下文资源参数，可以使用<a href="http://php.net/manual/en/function.stream-context-create.php">stream_context_create()</a>
+来创建</p>
+
+<p>具体代码如下:</p>
+
+<pre><code>$context = stream_context_create(array(
+	'http' =&gt; array(
+		'proxy' =&gt; '[tcp|udp]&lt;proxy ip&gt;:&lt;proxy port&gt;',
+		'request_fulluri' =&gt; true,
+	),
+));
+
+//下面是简单的测试
+
+$url = 'froyo.cc';
+$content = file_get_contents($url,false,$context);
+echo $content;
+
+</code></pre>
+
+<h3 id="相关参考:0ecdfed02ee323a68deeb02f7b8b82cf">相关参考</h3>
+
+<p>使用strea_context_create()函数的库很多，比如<a href="https://github.com/guzzle/guzzle">Guzzle</a></p>
+
+<p>1.<a href="http://php.net/manual/zh/book.stream.php">php stream</a></p>
+
+<p>2.<a href="https://www.oschina.net/translate/understanding-streams-in-php">理解php的流</a></p>
+
+      
+      
+      
+    </article>
+    
+
+
+  </main>
+  
+  <nav class="pagination-single">
+    
+      <span class="previous">&larr; <a href="https://baykier.github.io/homepage/post/auto_deploy/" rel="prev">homepage 的自动部署</a></span>
+    
+    
+  </nav>
+
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      <img src="../../images/lavatar.png" width="64" height="64"><br>
+      Written by Baykier
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="../../js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>
+

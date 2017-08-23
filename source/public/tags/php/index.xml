@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Php on Baykier的鱼塘</title>
+    <link>https://baykier.github.io/homepage/tags/php/</link>
+    <description>Recent content in Php on Baykier的鱼塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 21 Jun 2017 01:42:02 +0000</lastBuildDate>
+    <atom:link href="https://baykier.github.io/homepage/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>php file_get_contents() 函数代理设置</title>
+      <link>https://baykier.github.io/homepage/post/php_proxy_file_get_contents/</link>
+      <pubDate>Wed, 21 Jun 2017 01:42:02 +0000</pubDate>
+      
+      <guid>https://baykier.github.io/homepage/post/php_proxy_file_get_contents/</guid>
+      <description>
+
+&lt;h2 id=&#34;php-file-get-contents-函数代理设置:0ecdfed02ee323a68deeb02f7b8b82cf&#34;&gt;php file_get_contents() 函数代理设置&lt;/h2&gt;
+
+&lt;h3 id=&#34;遇到的问题:0ecdfed02ee323a68deeb02f7b8b82cf&#34;&gt;遇到的问题&lt;/h3&gt;
+
+&lt;p&gt;昨天在使用file_get_contents()函数抓取图片内容的时候，出现超时的情况，而且图片无法获取到
+据猜测，是网络的问题，有可能被GFW河蟹了，于是登上我的服务器测试一下，发现在服务器可以正常打开。
+所以想到了如何给file_get_contents()函数设置代理,记录下来&lt;/p&gt;
+
+&lt;h3 id=&#34;file-get-contents-代理设置:0ecdfed02ee323a68deeb02f7b8b82cf&#34;&gt;file_get_contents()代理设置&lt;/h3&gt;
+
+&lt;p&gt;下面摘自file_get_content()的&lt;a href=&#34;http://php.net/manual/en/function.file-get-contents.php&#34;&gt;php官方手册&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;string file_get_contents ( string $filename [, bool $use_include_path = false [, resource $context [, int $offset = 0 [, int $maxlen ]]]] )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中，第三个参数&lt;strong&gt;context&lt;/strong&gt;就是一个上下文资源参数，可以使用&lt;a href=&#34;http://php.net/manual/en/function.stream-context-create.php&#34;&gt;stream_context_create()&lt;/a&gt;
+来创建&lt;/p&gt;
+
+&lt;p&gt;具体代码如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$context = stream_context_create(array(
+	&#39;http&#39; =&amp;gt; array(
+		&#39;proxy&#39; =&amp;gt; &#39;[tcp|udp]&amp;lt;proxy ip&amp;gt;:&amp;lt;proxy port&amp;gt;&#39;,
+		&#39;request_fulluri&#39; =&amp;gt; true,
+	),
+));
+
+//下面是简单的测试
+
+$url = &#39;froyo.cc&#39;;
+$content = file_get_contents($url,false,$context);
+echo $content;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;相关参考:0ecdfed02ee323a68deeb02f7b8b82cf&#34;&gt;相关参考&lt;/h3&gt;
+
+&lt;p&gt;使用strea_context_create()函数的库很多，比如&lt;a href=&#34;https://github.com/guzzle/guzzle&#34;&gt;Guzzle&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;1.&lt;a href=&#34;http://php.net/manual/zh/book.stream.php&#34;&gt;php stream&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2.&lt;a href=&#34;https://www.oschina.net/translate/understanding-streams-in-php&#34;&gt;理解php的流&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
