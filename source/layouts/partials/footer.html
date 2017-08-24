@@ -36,5 +36,9 @@
           })();
       </script>
   {{ end }}
+  <!--腾讯统计-->
+  {{ with .Site.Params.qqAnalytics }}
+        <script type="text/javascript" src="http://tajs.qq.com/stats?sId=63515776" charset="UTF-8"></script>
+  {{ end }}
 </body>
 </html>

@@ -8,6 +8,6 @@ github = "https://github.com/baykier"
 showsRSS = true
 profile = "/images/lavatar.png"
 copyright = "Written by Baykier"
-baiduAnalytics = true
+qqAnalytics = true
 
 
