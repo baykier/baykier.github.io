@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>扩展 on Baykier的鱼塘</title>
+    <link>https://baykier.github.io/tags/%E6%89%A9%E5%B1%95/</link>
+    <description>Recent content in 扩展 on Baykier的鱼塘</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 30 Aug 2017 10:31:22 +0000</lastBuildDate>
+    <atom:link href="https://baykier.github.io/tags/%E6%89%A9%E5%B1%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>php扩展模块加载顺序</title>
+      <link>https://baykier.github.io/post/php_ext_load_order/</link>
+      <pubDate>Wed, 30 Aug 2017 10:31:22 +0000</pubDate>
+      
+      <guid>https://baykier.github.io/post/php_ext_load_order/</guid>
+      <description>
+
+&lt;h2 id=&#34;php扩展模块的加载顺序:02f1e727e80bf40df049742bf59ba5f8&#34;&gt;php扩展模块的加载顺序&lt;/h2&gt;
+
+&lt;h3 id=&#34;为啥会有这个问题:02f1e727e80bf40df049742bf59ba5f8&#34;&gt;为啥会有这个问题？&lt;/h3&gt;
+
+&lt;p&gt;今天在安装php的扩展&lt;a href=&#34;http://pecl.php.net/package/APM&#34;&gt;apm&lt;/a&gt;的时候，文档写着必须在json扩展加载之后再加载apm模块,原文如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Activate the extension in the php configuration by adding:
+
+extension=apm.so
+Note: APM depends on JSON, so the apm.so extension must be loaded after JSON!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;那么php的扩展加载顺序是怎么规定的:02f1e727e80bf40df049742bf59ba5f8&#34;&gt;那么php的扩展加载顺序是怎么规定的?&lt;/h3&gt;
+
+&lt;p&gt;按照php手册上面的说明，php扩展加载是写在php.ini文件中的，而php的配置文件是顺序解析的，这说明除了默认内核扩展，php的其他扩展模块
+的加载顺序就是php.ini中的顺序，这是针对php.ini中的配置&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
