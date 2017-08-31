@@ -43,9 +43,13 @@ Note: APM depends on JSON, so the apm.so extension must be loaded after JSON!
 &lt;p&gt;最终会在php的扩展目录安装curl.so（/usr/lib/php/20151012/）,同时会在php的mods_available目录新增配置文件(curl.ini),这时候，php的
 curl扩展还没有加载，需要将&lt;code&gt;curl.ini&lt;/code&gt;软连接到&lt;code&gt;/etc/php/7.0/fpm/conf.d/&lt;/code&gt;，重启php的fpm才会生效&lt;/p&gt;
 
-&lt;h4 id=&#34;php扩展配置目录-images-ubuntu-php-7-0-mods-available-png:02f1e727e80bf40df049742bf59ba5f8&#34;&gt;&lt;img src=&#34;../images/ubuntu_php_7.0_mods_available.png&#34; alt=&#34;php扩展配置目录&#34; /&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;php扩展配置目录:02f1e727e80bf40df049742bf59ba5f8&#34;&gt;php扩展配置目录&lt;/h4&gt;
 
-&lt;h4 id=&#34;php的fpm扩展加载目录-images-ubuntu-php-7-0-fpm-conf-d-png:02f1e727e80bf40df049742bf59ba5f8&#34;&gt;&lt;img src=&#34;../images/ubuntu_php_7.0_fpm_conf.d.png&#34; alt=&#34;php的fpm扩展加载目录&#34; /&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;../images/ubuntu_php_7.0_mods_available.png&#34; alt=&#34;php扩展配置目录&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;php的fpm扩展加载目录:02f1e727e80bf40df049742bf59ba5f8&#34;&gt;php的fpm扩展加载目录&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&#34;../images/ubuntu_php_7.0_fpm_conf.d.png&#34; alt=&#34;php的fpm扩展加载目录&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;那么问题来了，如果以这种方式加载php的扩展，扩展的加载顺序如何呢？&lt;/p&gt;
 

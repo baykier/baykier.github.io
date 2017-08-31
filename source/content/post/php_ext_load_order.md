@@ -33,9 +33,13 @@ sudo apt update && sudo apt install php7.0-curl
 最终会在php的扩展目录安装curl.so（/usr/lib/php/20151012/）,同时会在php的mods_available目录新增配置文件(curl.ini),这时候，php的
 curl扩展还没有加载，需要将`curl.ini`软连接到`/etc/php/7.0/fpm/conf.d/`，重启php的fpm才会生效
 
-#### ![php扩展配置目录](/images/ubuntu_php_7.0_mods_available.png)
+#### php扩展配置目录
 
-#### ![php的fpm扩展加载目录](/images/ubuntu_php_7.0_fpm_conf.d.png)
+![php扩展配置目录](/images/ubuntu_php_7.0_mods_available.png)
+
+#### php的fpm扩展加载目录
+
+![php的fpm扩展加载目录](/images/ubuntu_php_7.0_fpm_conf.d.png)
 
 那么问题来了，如果以这种方式加载php的扩展，扩展的加载顺序如何呢？
 
