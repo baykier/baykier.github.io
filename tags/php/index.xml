@@ -29,10 +29,34 @@ extension=apm.so
 Note: APM depends on JSON, so the apm.so extension must be loaded after JSON!
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;那么php的扩展加载顺序是怎么规定的:02f1e727e80bf40df049742bf59ba5f8&#34;&gt;那么php的扩展加载顺序是怎么规定的?&lt;/h3&gt;
+&lt;h3 id=&#34;那么php的扩展加载顺序是怎么的:02f1e727e80bf40df049742bf59ba5f8&#34;&gt;那么php的扩展加载顺序是怎么的?&lt;/h3&gt;
 
-&lt;p&gt;按照php手册上面的说明，php扩展加载是写在php.ini文件中的，而php的配置文件是顺序解析的，这说明除了默认内核扩展，php的其他扩展模块
-的加载顺序就是php.ini中的顺序，这是针对php.ini中的配置&lt;/p&gt;
+&lt;p&gt;按照php手册上面的说明，php扩展加载是写在php.ini文件中配置的，而php的配置文件是顺序解析的，这说明除了默认内核扩展，php的其他扩展模块
+的加载顺序就是php.ini中的先后顺序，这是针对php.ini中的配置。对于ubuntu来说，php的扩展配置是单独放置在额外的配置目录，每一个扩展加载都是
+一个配置文件，类似&lt;a href=&#34;http://nginx.org/&#34;&gt;nginx&lt;/a&gt;的站点配置，以ubuntu-16.04-LTS为例：&lt;/p&gt;
+
+&lt;p&gt;如果我们要安装php的curl扩展:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt update &amp;amp;&amp;amp; sudo apt install php7.0-curl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最终会在php的扩展目录安装curl.so（/usr/lib/php/20151012/）,同时会在php的mods_available目录新增配置文件(curl.ini),这时候，php的
+curl扩展还没有加载，需要将&lt;code&gt;curl.ini&lt;/code&gt;软连接到&lt;code&gt;/etc/php/7.0/fpm/conf.d/&lt;/code&gt;，重启php的fpm才会生效&lt;/p&gt;
+
+&lt;h4 id=&#34;php扩展配置目录-images-ubuntu-php-7-0-modes-available-png:02f1e727e80bf40df049742bf59ba5f8&#34;&gt;&lt;img src=&#34;../../images/ubuntu_php_7.0_modes_available.png&#34; alt=&#34;php扩展配置目录&#34; /&gt;&lt;/h4&gt;
+
+&lt;h4 id=&#34;php的fpm扩展加载目录-images-ubuntu-php-7-0-fpm-conf-d-png:02f1e727e80bf40df049742bf59ba5f8&#34;&gt;&lt;img src=&#34;../../images/ubuntu_php_7.0_fpm_conf.d.png&#34; alt=&#34;php的fpm扩展加载目录&#34; /&gt;&lt;/h4&gt;
+
+&lt;p&gt;那么问题来了，如果以这种方式加载php的扩展，扩展的加载顺序如何呢？&lt;/p&gt;
+
+&lt;p&gt;答案就是安装配置文件目录的&lt;code&gt;文件自然排序&lt;/code&gt;顺序加载的.至于为什么，看了php的扩展加载目录前面的那个数字就明白了。&lt;/p&gt;
+
+&lt;h3 id=&#34;相关阅读:02f1e727e80bf40df049742bf59ba5f8&#34;&gt;相关阅读&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.laruence.com/2009/08/18/1042.html&#34;&gt;保证PHP扩展的依赖关系&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://php.net/manual/zh/install.php&#34;&gt;php的安装与配置&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
