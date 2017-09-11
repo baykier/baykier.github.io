@@ -79,7 +79,7 @@
 后端，采用文件上传时，均采用一个接口，重要的是文件上传API地址是单独的一台服务器。对于后端和APP端来说，还好
 ，但是对于前端（H5）来说，就存在跨域的请求问题</p></li>
 
-<li><p><strong>情景二</strong>作为前端开发(H5),本地搭建测试环境，（<a href="http://localhost），链接测试环境的接口(http://test.xxxxx.com),这时候，由于">http://localhost），链接测试环境的接口(http://test.xxxxx.com),这时候，由于</a>
+<li><p><strong>情景二</strong>作为前端开发(H5),本地搭建测试环境，例如<code>http://localhost</code>，链接测试环境的接口<code>http://test.xxxxx.com</code>,这时候，由于
 请求的也不是同一个服务器，也会存在跨域问题</p></li>
 </ol>
 
@@ -92,9 +92,10 @@
 <p>要解决跨域问题，有两种方式:</p>
 
 <ol>
-<li>配置服务器，添加允许的跨域访问域名，从而使浏览器正常接收ajax返回的数据
-<code>
-server {
+<li>配置服务器，添加允许的跨域访问域名，从而使浏览器正常接收ajax返回的数据</li>
+</ol>
+
+<pre><code>server {
 		listen       80;
 		server_name  test.com;
 		location /{
@@ -103,18 +104,20 @@ server {
 			add_header 'Access-Control-Allow-Methods' 'POST';
 		}
 }
-</code></li>
-<li>如果后端使用php，则可以在index.php入口文件简单修改:
-<code>
-// 指定允许其他域名访问
+</code></pre>
+
+<ol>
+<li>如果后端使用php，则可以在index.php入口文件简单修改:</li>
+</ol>
+
+<pre><code>// 指定允许其他域名访问
 header('Access-Control-Allow-Origin:http:localhost');
 header('Access-Control-Allow-Credentials:true');
 // 响应类型
 header('Access-Control-Allow-Methods:POST');
 // 响应头设置
 header('Access-Control-Allow-Headers:x-requested-with,content-type');
-</code></li>
-</ol>
+</code></pre>
 
 <h3 id="相关阅读:98fb73293a0aa9e1c27ae7de89b383c7">相关阅读</h3>
 

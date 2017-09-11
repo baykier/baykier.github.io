@@ -13,7 +13,7 @@ title = "JavaScript跨域访问控制问题"
    后端，采用文件上传时，均采用一个接口，重要的是文件上传API地址是单独的一台服务器。对于后端和APP端来说，还好
    ，但是对于前端（H5）来说，就存在跨域的请求问题
 
-2. **情景二**作为前端开发(H5),本地搭建测试环境，（http://localhost），链接测试环境的接口(http://test.xxxxx.com),这时候，由于
+2. **情景二**作为前端开发(H5),本地搭建测试环境，例如`http://localhost`，链接测试环境的接口`http://test.xxxxx.com`,这时候，由于
    请求的也不是同一个服务器，也会存在跨域问题
 
 ### 什么是跨域访问
@@ -25,6 +25,7 @@ title = "JavaScript跨域访问控制问题"
 要解决跨域问题，有两种方式:
 
 1. 配置服务器，添加允许的跨域访问域名，从而使浏览器正常接收ajax返回的数据
+
 ```
 server {
 		listen       80;
@@ -37,6 +38,7 @@ server {
 }
 ```
 2. 如果后端使用php，则可以在index.php入口文件简单修改:
+
 ```
 // 指定允许其他域名访问
 header('Access-Control-Allow-Origin:http:localhost');
