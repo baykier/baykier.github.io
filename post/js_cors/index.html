@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <link rel="shortcut icon" href="../../images/favicon.ico"/>
+  
+  <meta charset="UTF-8">
+  <title>
+    JavaScript跨域访问控制问题 | Baykier的鱼塘
+  </title>
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="https://baykier.github.io/post/js_cors/"/>
+
+  
+  <link rel="stylesheet" href="../../css/sanitize.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <link rel="stylesheet" href="../../css/highlight_monokai.css">
+  <link rel="stylesheet" href="../../css/theme.css">
+  <link rel="stylesheet" href="../../css/custom.css">
+  
+  
+  <link href="https://baykier.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Baykier的鱼塘" />
+  <link href="https://baykier.github.io/index.xml" rel="feed" type="application/rss+xml" title="Baykier的鱼塘" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container" >
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="https://baykier.github.io/">Baykier的鱼塘</a></h1>
+        
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          <li><a href="https://baykier.github.io/about" target="_blank">about</a></li>
+          
+          
+          <li><a href="https://github.com/baykier" target="_blank">GitHub</a></li>
+          <li><a href="https://baykier.github.io/index.xml" type="application/rss+xml" target="_blank">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  
+  <main id="single" role="main">
+    <div class="article-header">
+      <h3>JavaScript跨域访问控制问题</h3>
+      <div class="meta">
+        Sep 11, 2017 &nbsp;
+        
+          <a href="../../tags/js">js</a>&nbsp;
+        
+      </div>
+    </div>
+    <article>
+      
+
+<h2 id="javascript跨域访问控制问题:98fb73293a0aa9e1c27ae7de89b383c7">JavaScript跨域访问控制问题</h2>
+
+<h3 id="问题描述:98fb73293a0aa9e1c27ae7de89b383c7">问题描述</h3>
+
+<ol>
+<li><p><strong>情景一</strong>由于公司的文件上传采用单独的文件服务器管理，把上传文件操作做了统一抽象，形成了一个API接口，不管是前端（包括APP），
+后端，采用文件上传时，均采用一个接口，重要的是文件上传API地址是单独的一台服务器。对于后端和APP端来说，还好
+，但是对于前端（H5）来说，就存在跨域的请求问题</p></li>
+
+<li><p><strong>情景二</strong>作为前端开发(H5),本地搭建测试环境，（<a href="http://localhost），链接测试环境的接口(http://test.xxxxx.com),这时候，由于">http://localhost），链接测试环境的接口(http://test.xxxxx.com),这时候，由于</a>
+请求的也不是同一个服务器，也会存在跨域问题</p></li>
+</ol>
+
+<h3 id="什么是跨域访问:98fb73293a0aa9e1c27ae7de89b383c7">什么是跨域访问</h3>
+
+<p>当一个资源从与该资源本身所在的服务器不同的域或端口请求一个资源时，资源会发起一个<strong>跨域 HTTP 请求</strong></p>
+
+<h3 id="如何解决跨域请求问题:98fb73293a0aa9e1c27ae7de89b383c7">如何解决跨域请求问题</h3>
+
+<p>要解决跨域问题，有两种方式:</p>
+
+<ol>
+<li>配置服务器，添加允许的跨域访问域名，从而使浏览器正常接收ajax返回的数据
+<code>
+server {
+		listen       80;
+		server_name  test.com;
+		location /{
+			add_header 'Access-Control-Allow-Origin' 'http://a.com';
+			add_header 'Access-Control-Allow-Credentials' 'true';
+			add_header 'Access-Control-Allow-Methods' 'POST';
+		}
+}
+</code></li>
+<li>如果后端使用php，则可以在index.php入口文件简单修改:
+<code>
+// 指定允许其他域名访问
+header('Access-Control-Allow-Origin:http:localhost');
+header('Access-Control-Allow-Credentials:true');
+// 响应类型
+header('Access-Control-Allow-Methods:POST');
+// 响应头设置
+header('Access-Control-Allow-Headers:x-requested-with,content-type');
+</code></li>
+</ol>
+
+<h3 id="相关阅读:98fb73293a0aa9e1c27ae7de89b383c7">相关阅读</h3>
+
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS">HTTP跨域访问控制</a></li>
+<li><a href="http://blog.w2fzu.com/2016/11/21/2016-11-21-PHP-CORS/">PHP 解决 CORS 跨域问题</a></li>
+</ul>
+
+      
+      
+      
+    </article>
+    
+
+
+  </main>
+  
+  <nav class="pagination-single">
+    
+      <span class="previous">&larr; <a href="https://baykier.github.io/post/php_ext_load_order/" rel="prev">php扩展模块加载顺序</a></span>
+    
+    
+  </nav>
+
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      <img src="../../images/lavatar.png" width="64" height="64"><br>
+      Written by Baykier
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="../../js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  
+  
+  
+  
+        <script type="text/javascript" src="https://tajs.qq.com/stats?sId=63515776" charset="UTF-8"></script>
+  
+</body>
+</html>
+
