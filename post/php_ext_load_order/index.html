@@ -72,9 +72,9 @@
     <article>
       
 
-<h2 id="php扩展模块的加载顺序:02f1e727e80bf40df049742bf59ba5f8">php扩展模块的加载顺序</h2>
+<h2 id="php扩展模块的加载顺序">php扩展模块的加载顺序</h2>
 
-<h3 id="为啥会有这个问题:02f1e727e80bf40df049742bf59ba5f8">为啥会有这个问题？</h3>
+<h3 id="为啥会有这个问题">为啥会有这个问题？</h3>
 
 <p>今天在安装php的扩展<a href="http://pecl.php.net/package/APM">apm</a>的时候，文档写着必须在json扩展加载之后再加载apm模块,原文如下:</p>
 
@@ -84,7 +84,7 @@ extension=apm.so
 Note: APM depends on JSON, so the apm.so extension must be loaded after JSON!
 </code></pre>
 
-<h3 id="那么php的扩展加载顺序是怎么的:02f1e727e80bf40df049742bf59ba5f8">那么php的扩展加载顺序是怎么的?</h3>
+<h3 id="那么php的扩展加载顺序是怎么的">那么php的扩展加载顺序是怎么的?</h3>
 
 <p>按照php手册上面的说明，php扩展加载是写在php.ini文件中配置的，而php的配置文件是顺序解析的，这说明除了默认内核扩展，php的其他扩展模块
 的加载顺序就是php.ini中的先后顺序，这是针对php.ini中的配置。对于ubuntu来说，php的扩展配置是单独放置在额外的配置目录，每一个扩展加载都是
@@ -98,11 +98,11 @@ Note: APM depends on JSON, so the apm.so extension must be loaded after JSON!
 <p>最终会在php的扩展目录安装curl.so（/usr/lib/php/20151012/）,同时会在php的mods_available目录新增配置文件(curl.ini),这时候，php的
 curl扩展还没有加载，需要将<code>curl.ini</code>软连接到<code>/etc/php/7.0/fpm/conf.d/</code>，重启php的fpm才会生效</p>
 
-<h4 id="php扩展配置目录:02f1e727e80bf40df049742bf59ba5f8">php扩展配置目录</h4>
+<h4 id="php扩展配置目录">php扩展配置目录</h4>
 
 <p><img src="../../images/ubuntu_php_7.0_mods_available.png" alt="php扩展配置目录" /></p>
 
-<h4 id="php的fpm扩展加载目录:02f1e727e80bf40df049742bf59ba5f8">php的fpm扩展加载目录</h4>
+<h4 id="php的fpm扩展加载目录">php的fpm扩展加载目录</h4>
 
 <p><img src="../../images/ubuntu_php_7.0_fpm_conf.d.png" alt="php的fpm扩展加载目录" /></p>
 
@@ -110,7 +110,7 @@ curl扩展还没有加载，需要将<code>curl.ini</code>软连接到<code>/etc
 
 <p>答案就是安装配置文件目录的<code>文件自然排序</code>顺序加载的.至于为什么，看了php的扩展加载目录前面的那个数字就明白了。</p>
 
-<h3 id="相关阅读:02f1e727e80bf40df049742bf59ba5f8">相关阅读</h3>
+<h3 id="相关阅读">相关阅读</h3>
 
 <ul>
 <li><a href="http://www.laruence.com/2009/08/18/1042.html">保证PHP扩展的依赖关系</a></li>

@@ -6,8 +6,11 @@
     <description>Recent content in Js on Baykier的鱼塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <copyright>Written by Baykier</copyright>
     <lastBuildDate>Mon, 11 Sep 2017 08:50:38 +0000</lastBuildDate>
-    <atom:link href="https://baykier.github.io/tags/js/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://baykier.github.io/tags/js/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>JavaScript跨域访问控制问题</title>
@@ -15,64 +18,11 @@
       <pubDate>Mon, 11 Sep 2017 08:50:38 +0000</pubDate>
       
       <guid>https://baykier.github.io/post/js_cors/</guid>
-      <description>
-
-&lt;h2 id=&#34;javascript跨域访问控制问题:98fb73293a0aa9e1c27ae7de89b383c7&#34;&gt;JavaScript跨域访问控制问题&lt;/h2&gt;
-
-&lt;h3 id=&#34;问题描述:98fb73293a0aa9e1c27ae7de89b383c7&#34;&gt;问题描述&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;情景一&lt;/strong&gt;由于公司的文件上传采用单独的文件服务器管理，把上传文件操作做了统一抽象，形成了一个API接口，不管是前端（包括APP），
-后端，采用文件上传时，均采用一个接口，重要的是文件上传API地址是单独的一台服务器。对于后端和APP端来说，还好
-，但是对于前端（H5）来说，就存在跨域的请求问题&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;情景二&lt;/strong&gt;作为前端开发(H5),本地搭建测试环境，例如&lt;code&gt;http://localhost&lt;/code&gt;，链接测试环境的接口&lt;code&gt;http://test.xxxxx.com&lt;/code&gt;,这时候，由于
-请求的也不是同一个服务器，也会存在跨域问题&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;什么是跨域访问:98fb73293a0aa9e1c27ae7de89b383c7&#34;&gt;什么是跨域访问&lt;/h3&gt;
-
-&lt;p&gt;当一个资源从与该资源本身所在的服务器不同的域或端口请求一个资源时，资源会发起一个&lt;strong&gt;跨域 HTTP 请求&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;如何解决跨域请求问题:98fb73293a0aa9e1c27ae7de89b383c7&#34;&gt;如何解决跨域请求问题&lt;/h3&gt;
-
-&lt;p&gt;要解决跨域问题，有两种方式:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;配置服务器，添加允许的跨域访问域名，从而使浏览器正常接收ajax返回的数据&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code&gt;server {
-		listen       80;
-		server_name  test.com;
-		location /{
-			add_header &#39;Access-Control-Allow-Origin&#39; &#39;http://a.com&#39;;
-			add_header &#39;Access-Control-Allow-Credentials&#39; &#39;true&#39;;
-			add_header &#39;Access-Control-Allow-Methods&#39; &#39;POST&#39;;
-		}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ol&gt;
-&lt;li&gt;如果后端使用php，则可以在index.php入口文件简单修改:&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code&gt;// 指定允许其他域名访问
-header(&#39;Access-Control-Allow-Origin:http:localhost&#39;);
-header(&#39;Access-Control-Allow-Credentials:true&#39;);
-// 响应类型
-header(&#39;Access-Control-Allow-Methods:POST&#39;);
-// 响应头设置
-header(&#39;Access-Control-Allow-Headers:x-requested-with,content-type&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;相关阅读:98fb73293a0aa9e1c27ae7de89b383c7&#34;&gt;相关阅读&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS&#34;&gt;HTTP跨域访问控制&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://blog.w2fzu.com/2016/11/21/2016-11-21-PHP-CORS/&#34;&gt;PHP 解决 CORS 跨域问题&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description> JavaScript跨域访问控制问题 问题描述  情景一由于公司的文件上传采用单独的文件服务器管理，把上传文件操作做了统一抽象，形成了一个API接口，不管是前端（包括APP）， 后端，采用文件上传时，均采用一个接口，重要的是文件上传API地址是单独的一台服务器。对于后端和APP端来说，还好 ，但是对于前端（H5）来说，就存在跨域的请求问题
+ 情景二作为前端开发(H5),本地搭建测试环境，例如http://localhost，链接测试环境的接口http://test.xxxxx.com,这时候，由于 请求的也不是同一个服务器，也会存在跨域问题
+  什么是跨域访问 当一个资源从与该资源本身所在的服务器不同的域或端口请求一个资源时，资源会发起一个跨域 HTTP 请求
+如何解决跨域请求问题 要解决跨域问题，有两种方式:
+ 配置服务器，添加允许的跨域访问域名，从而使浏览器正常接收ajax返回的数据  server { listen 80; server_name test.com; location /{ add_header &#39;Access-Control-Allow-Origin&#39; &#39;http://a.com&#39;; add_header &#39;Access-Control-Allow-Credentials&#39; &#39;true&#39;; add_header &#39;Access-Control-Allow-Methods&#39; &#39;POST&#39;; } }   如果后端使用php，则可以在index.php入口文件简单修改:  // 指定允许其他域名访问 header(&#39;Access-Control-Allow-Origin:http:localhost&#39;); header(&#39;Access-Control-Allow-Credentials:true&#39;); // 响应类型 header(&#39;Access-Control-Allow-Methods:POST&#39;); // 响应头设置 header(&#39;Access-Control-Allow-Headers:x-requested-with,content-type&#39;);  相关阅读  HTTP跨域访问控制 PHP 解决 CORS 跨域问题  </description>
     </item>
     
   </channel>

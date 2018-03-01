@@ -70,9 +70,9 @@
     <article>
       
 
-<h1 id="homepage自动部署:6aeacf3a3830a0313934c0e34cc156d6">homepage自动部署</h1>
+<h1 id="homepage自动部署">homepage自动部署</h1>
 
-<h2 id="背景:6aeacf3a3830a0313934c0e34cc156d6">背景</h2>
+<h2 id="背景">背景</h2>
 
 <p>首先交代一下背景，俺的博客是基于hugo的生成静态站点，代码放在github上面 对于<a href="https://gohugo.io/">hugo</a>
 和<a href="https://github.com/">github</a>不是很了解的同学可以去了解一下。</p>
@@ -102,7 +102,7 @@ git pull origin master
 <p>经过上面的分析可以看出，对于服务器端的每次拉取可以写成一个脚本，利用github的hook机制，这样每次写完博客
 测试ok直接推送就行了，省去每次登录服务器，再<code>git pull</code>的操作，这样岂不美哉！</p>
 
-<h2 id="自动部署脚本原理:6aeacf3a3830a0313934c0e34cc156d6">自动部署脚本原理</h2>
+<h2 id="自动部署脚本原理">自动部署脚本原理</h2>
 
 <p>其实对于这个机智(偷懒)的想法早就有了，直到昨天下午有时间，才完善了一下。网上有很多类似的代码，实现原理
 大同小异,都是根据github的hook机制,需要注意的就是安全方面，具体流程如下面:</p>
@@ -113,7 +113,7 @@ git pull origin master
 
 <p>3.url里面验证推送的来源(确保安全),执行代码拉取完成更新</p>
 
-<h2 id="编写php脚本-因为php是最好的语言么:6aeacf3a3830a0313934c0e34cc156d6">编写php脚本(因为php是最好的语言么)</h2>
+<h2 id="编写php脚本-因为php是最好的语言么">编写php脚本(因为php是最好的语言么)</h2>
 
 <p>代码可以在这里找到<a href="https://github.com/baykier/homepage/blob/master/froyo.cc/public/index.php">homepage自动部署脚本</a></p>
 
@@ -161,7 +161,7 @@ shell_exec(sprintf(&quot;echo git pull status is %s &gt;&gt; %s \n&quot;,getShel
 <p>安装方面可以参考这里<a href="https://laravel-china.org/topics/2192/centos-under-the-use-of-webhook-to-achieve-automatic-deployment-php">CentOS 下利用 webhook 实现自动部署（PHP）</a></p>
 </blockquote>
 
-<h2 id="相关参考:6aeacf3a3830a0313934c0e34cc156d6">相关参考</h2>
+<h2 id="相关参考">相关参考</h2>
 
 <p>1.如果需要部署项目，可能就需要用到自动部署工具了 php的有两个<a href="https://deployer.org/">deploy</a>和<a href="http://rocketeer.autopergamene.eu/">rocketeer</a>
 它们都用到了git</p>

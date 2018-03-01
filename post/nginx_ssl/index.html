@@ -72,11 +72,11 @@
     <article>
       
 
-<h2 id="nginx-ssl证书配置:8fab18bd4fe7e07a7bde834a1d2424ff">nginx ssl证书配置</h2>
+<h2 id="nginx-ssl证书配置">nginx ssl证书配置</h2>
 
 <p>一般在开发环境中，ssl时没有必要设置的，但是因为测试需要用到https环境，所以就记录下来，当学习了。</p>
 
-<h3 id="生成ssl证书:8fab18bd4fe7e07a7bde834a1d2424ff">生成ssl证书</h3>
+<h3 id="生成ssl证书">生成ssl证书</h3>
 
 <p>https 需要证书，所需要的证书一般可以自己生成，这时候需要手动添加到浏览器，还有就是去证书网站申请,推荐使用
 <a href="https://letsencrypt.org/">Let&rsquo;s Encrypt</a> (注:这种证书只能使用3个月的时间，过期需要再次申请)
@@ -105,16 +105,17 @@
 <li>Organization Name 机构名称 (develop Ltd)</li>
 <li>Organizational Unit Name 组织机构单位 (develop)</li>
 <li>Common Name 站点host (dev.com)</li>
-
-<li><p>Email Address 邮箱</p></li>
-
-<li><p>生成不需要密码的密钥,给nginx配置</p></li>
+<li>Email Address 邮箱</li>
 </ul>
+
+<ol>
+<li>生成不需要密码的密钥,给nginx配置</li>
+</ol>
 
 <pre><code>openssl rsa -in dev.key -out dev.nopass.key
 </code></pre>
 
-<h3 id="配置nginx:8fab18bd4fe7e07a7bde834a1d2424ff">配置nginx</h3>
+<h3 id="配置nginx">配置nginx</h3>
 
 <p>nginx 配置很简单，导入证书路径即可,下面是一个实例配置</p>
 
@@ -161,7 +162,7 @@
  }
 </code></pre>
 
-<h2 id="相关阅读:8fab18bd4fe7e07a7bde834a1d2424ff">相关阅读</h2>
+<h2 id="相关阅读">相关阅读</h2>
 
 <ul>
 <li><a href="http://www.cnblogs.com/littlehann/p/3738141.html">证书介绍</a></li>

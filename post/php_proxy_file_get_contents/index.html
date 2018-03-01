@@ -70,15 +70,15 @@
     <article>
       
 
-<h2 id="php-file-get-contents-函数代理设置:0ecdfed02ee323a68deeb02f7b8b82cf">php file_get_contents() 函数代理设置</h2>
+<h2 id="php-file-get-contents-函数代理设置">php file_get_contents() 函数代理设置</h2>
 
-<h3 id="遇到的问题:0ecdfed02ee323a68deeb02f7b8b82cf">遇到的问题</h3>
+<h3 id="遇到的问题">遇到的问题</h3>
 
 <p>昨天在使用file_get_contents()函数抓取图片内容的时候，出现超时的情况，而且图片无法获取到
 据猜测，是网络的问题，有可能被GFW河蟹了，于是登上我的服务器测试一下，发现在服务器可以正常打开。
 所以想到了如何给file_get_contents()函数设置代理,记录下来</p>
 
-<h3 id="file-get-contents-代理设置:0ecdfed02ee323a68deeb02f7b8b82cf">file_get_contents()代理设置</h3>
+<h3 id="file-get-contents-代理设置">file_get_contents()代理设置</h3>
 
 <p>下面摘自file_get_content()的<a href="http://php.net/manual/en/function.file-get-contents.php">php官方手册</a></p>
 
@@ -105,7 +105,7 @@ echo $content;
 
 </code></pre>
 
-<h3 id="相关参考:0ecdfed02ee323a68deeb02f7b8b82cf">相关参考</h3>
+<h3 id="相关参考">相关参考</h3>
 
 <p>使用strea_context_create()函数的库很多，比如<a href="https://github.com/guzzle/guzzle">Guzzle</a></p>
 
