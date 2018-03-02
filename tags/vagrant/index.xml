@@ -6,10 +6,25 @@
     <description>Recent content in Vagrant on Baykier的鱼塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 02 Jun 2017 11:39:36 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 02 Mar 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://baykier.github.io/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>vagrant windows 大小写问题解决</title>
+      <link>https://baykier.github.io/post/vagrant-win-case-sensetive/</link>
+      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://baykier.github.io/post/vagrant-win-case-sensetive/</guid>
+      <description> vagrant windows 大小写问题解决 开发环境使用vagrant，以为这样能很好的解决开发中的坑，没想到还是中了不区分大小写的问题的坑，记录下来，防止踩坑
+开发环境: host windwos 10 虚拟机: guest debian8 出现的问题： 工作中使用php开发的cli脚本，需要到线上服务器执行，本地写完了，执行后返回预期的结果，开开心心的到服务器一运行，发现居然没反应(ps 和框架的异常机制也有问题)， 找了半天才发现是文件大小写的问题，由于使用vagrant在linux环境开发，就没有意识到这一点（默哀三秒。。。）然后查找相关资料，才发现使用virtualbox 默认挂载的目录是不区文件分大小写的 在guest中同样也是不区分，最开始的解决思路就是看看php能不能解决这个问题（让php跨平台的支持文件大小写）后来发现php底层是依赖与操作系统的，php本身无法解决，于是重点来了： 如何让windows+virtualbox中的vagrant支持区分文件大小写
+vagrant在windows+virtualbox 支持文件区分大小写 要想让vagrant 在windows host中支持文件大小写，需求通过安装插件来支持:nfs
+ 打开cmd命令行或者git bash:  vagrant plugin install vagrant-winnfsd  等执行完成后进行下一步
+ 在Vagrantfile添加 挂载参数 type:&amp;ldquo;nfs&amp;rdquo;  config.vm.synced_folder &amp;quot;./project&amp;quot;, &amp;quot;/project&amp;quot;, type:&amp;quot;nfs&amp;quot;   添加private_network支持(插件依赖 https://github.com/winnfsd/vagrant-winnfsd#activate-nfs-for-vagrant):  config.vm.network &amp;quot;private_network&amp;quot;, type: &amp;quot;dhcp&amp;quot;   vagrant reload虚拟机  vagrant reload  ok！ 到这一步，问题算是解决了，让我们愉快的玩耍吧 :) 相关链接  https://github.com/winnfsd/vagrant-winnfsd#activate-nfs-for-vagrant
+ https://stackoverflow.com/questions/26483867/how-to-handle-files-in-case-sensitive-way-in-vagrant-on-windows-host
+  </description>
+    </item>
     
     <item>
       <title>ubuntu 代理设置</title>
@@ -23,21 +38,6 @@ apt git npm composer 等使用遇到的问题 apt git npm composer 由于GFW的�
 	git config --global http.proxy &amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt; git config --global https.proxy &amp;lt;your proxyip&amp;gt;:&amp;lt;your proxy port&amp;gt; # socks git config --global http.proxy socks5h://&amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt; git config --global https.proxy socks5h://&amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt;  参考git proxy setting
 2.apt
  sudo echo &#39;Acquire::http::Proxy &amp;quot;http://&amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt;&amp;quot;;&#39; &amp;gt;&amp;gt; /etc/apt/apt.</description>
-    </item>
-    
-    <item>
-      <title>vagrant windows 大小写问题解决</title>
-      <link>https://baykier.github.io/post/vagrant-win-case-sensetive/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://baykier.github.io/post/vagrant-win-case-sensetive/</guid>
-      <description> vagrant windows 大小写问题解决 开发环境使用vagrant，以为这样能很好的解决开发中的坑，没想到还是中了不区分大小写的问题的坑，记录下来，防止踩坑
-开发环境: host windwos 10 虚拟机: guest debian8 出现的问题： 工作中使用php开发的cli脚本，需要到线上服务器执行，本地写完了，执行后返回预期的结果，开开心心的到服务器一运行，发现居然没反应(ps 和框架的异常机制也有问题)， 找了半天才发现是文件大小写的问题，由于使用vagrant在linux环境开发，就没有意识到这一点（默哀三秒。。。）然后查找相关资料，才发现使用virtualbox 默认挂载的目录是不区文件分大小写的 在guest中同样也是不区分，最开始的解决思路就是看看php能不能解决这个问题（让php跨平台的支持文件大小写）后来发现php底层是依赖与操作系统的，php本身无法解决，于是重点来了： 如何让windows+virtualbox中的vagrant支持区分文件大小写
-vagrant在windows+virtualbox 支持文件区分大小写 要想让vagrant 在windows host中支持文件大小写，需求通过安装插件来支持:nfs
- 打开cmd命令行或者git bash:  vagrant plugin install vagrant-winnfsd  等执行完成后进行下一步
- 在Vagrantfile添加 挂载参数 type:&amp;ldquo;nfs&amp;rdquo;  config.vm.synced_folder &amp;quot;./project&amp;quot;, &amp;quot;/project&amp;quot;, type:&amp;quot;nfs&amp;quot;   添加private_network支持(插件依赖 https://github.com/winnfsd/vagrant-winnfsd#activate-nfs-for-vagrant):  config.vm.network &amp;quot;private_network&amp;quot;, type: &amp;quot;dhcp&amp;quot;   vagrant reload虚拟机  vagrant reload  ok！ 到这一步，问题算是解决了，让我们愉快的玩耍吧 :) 相关链接  https://github.com/winnfsd/vagrant-winnfsd#activate-nfs-for-vagrant
- https://stackoverflow.com/questions/26483867/how-to-handle-files-in-case-sensitive-way-in-vagrant-on-windows-host
-  </description>
     </item>
     
   </channel>

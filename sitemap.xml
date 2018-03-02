@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://baykier.github.io/post/vagrant-win-case-sensetive/</loc>
+    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://baykier.github.io/post/js_cors/</loc>
     <lastmod>2017-09-11T08:50:38+00:00</lastmod>
   </url>
@@ -34,27 +39,28 @@
   
   <url>
     <loc>https://baykier.github.io/post/about_self_study/</loc>
-    <lastmod>2017-05-25T18:04:15+08:00</lastmod>
+    <lastmod>2017-05-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://baykier.github.io/about/</loc>
-    <lastmod>2017-02-28T18:19:13+08:00</lastmod>
+    <lastmod>2017-02-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://baykier.github.io/post/welcome/</loc>
-    <lastmod>2017-02-22T18:04:15+08:00</lastmod>
+    <lastmod>2017-02-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://baykier.github.io/</loc>
-    <lastmod>2017-09-11T08:50:38+00:00</lastmod>
+    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://baykier.github.io/tags/case-sensetive/</loc>
+    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -89,7 +95,7 @@
   
   <url>
     <loc>https://baykier.github.io/post/</loc>
-    <lastmod>2017-09-11T08:50:38+00:00</lastmod>
+    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -101,18 +107,14 @@
   
   <url>
     <loc>https://baykier.github.io/tags/</loc>
-    <lastmod>2017-09-11T08:50:38+00:00</lastmod>
+    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://baykier.github.io/tags/vagrant/</loc>
-    <lastmod>2017-06-02T11:39:36+08:00</lastmod>
+    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://baykier.github.io/post/vagrant-win-case-sensetive/</loc>
   </url>
   
   <url>
@@ -123,7 +125,7 @@
   
   <url>
     <loc>https://baykier.github.io/tags/%E8%87%AA%E5%AD%A6/</loc>
-    <lastmod>2017-05-25T18:04:15+08:00</lastmod>
+    <lastmod>2017-05-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
