@@ -1,7 +1,7 @@
 +++
 title = "vagrant windows 大小写问题解决"
 tags = ["vagrant","case-sensetive"]
-date = "2018-03-02"
+date = "2018-03-01"
 +++
 
 ## vagrant windows 大小写问题解决

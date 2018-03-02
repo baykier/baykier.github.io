@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Baykier的鱼塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 02 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Mar 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://baykier.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Case Sensetive</title>
       <link>https://baykier.github.io/tags/case-sensetive/</link>
-      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://baykier.github.io/tags/case-sensetive/</guid>
       <description></description>
@@ -68,9 +68,27 @@
     <item>
       <title>Vagrant</title>
       <link>https://baykier.github.io/tags/vagrant/</link>
-      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://baykier.github.io/tags/vagrant/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>https://baykier.github.io/tags/web/</link>
+      <pubDate>Fri, 02 Mar 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://baykier.github.io/tags/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Webassembly</title>
+      <link>https://baykier.github.io/tags/webassembly/</link>
+      <pubDate>Fri, 02 Mar 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://baykier.github.io/tags/webassembly/</guid>
       <description></description>
     </item>
     
