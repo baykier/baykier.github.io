@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Baykier的鱼塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 01 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Apr 2018 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://baykier.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Aggregate</title>
+      <link>https://baykier.github.io/tags/aggregate/</link>
+      <pubDate>Thu, 19 Apr 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://baykier.github.io/tags/aggregate/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Case Sensetive</title>
@@ -17,6 +26,15 @@
       <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://baykier.github.io/tags/case-sensetive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Distinct</title>
+      <link>https://baykier.github.io/tags/distinct/</link>
+      <pubDate>Thu, 19 Apr 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://baykier.github.io/tags/distinct/</guid>
       <description></description>
     </item>
     
@@ -35,6 +53,15 @@
       <pubDate>Mon, 11 Sep 2017 08:50:38 +0000</pubDate>
       
       <guid>https://baykier.github.io/tags/js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mongodb</title>
+      <link>https://baykier.github.io/tags/mongodb/</link>
+      <pubDate>Thu, 19 Apr 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://baykier.github.io/tags/mongodb/</guid>
       <description></description>
     </item>
     
