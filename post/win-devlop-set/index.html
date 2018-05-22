@@ -70,7 +70,7 @@
 
 <h2 id="windows-开发环境设置">windows 开发环境设置</h2>
 
-<p>作为一个web开发，已经有5年了，最近正好有空，将工作中的开发环境设置使用来记录下来，来分享一下。windows系统，来开发后端程序，往往需要克服很大问题，比如，文件大小写的问题，扩展不支持等等。而为了解决这个问题，借助vagrant，docker可以完美的解决这些问题，保证和线上代码一致的开发环境(包括mac，linux)</p>
+<p>作为一个web开发，已经有5年了，最近正好有空，将工作中的开发环境设置使用来记录下来，来分享一下。windows系统，来开发后端程序，往往需要克服很多问题，比如，文件大小写的问题，扩展不支持等等。而为了解决这个问题，借助vagrant，docker可以完美的解决这些问题，保证和线上代码一致的开发环境(包括mac，linux)</p>
 
 <h3 id="依赖的工具和软件">依赖的工具和软件</h3>
 
@@ -88,21 +88,15 @@
 
 <p>假设，我们新去了一家公司，领导给分配了一台电脑，但是不是苹果(mac)，我们就要开始苦逼的布置开发环境了</p>
 
-<ol>
-<li>安装git</li>
-</ol>
+<p>1 安装git</p>
 
 <p>git for window 默认集成了 MinGW，可以执行简单的shell命令，我们看重的就是这个(可以通过设置环境变量，来代理)</p>
 
-<ol>
-<li>安装virtualbox，shadowsocks等需要的软件</li>
-</ol>
+<p>2 安装virtualbox，shadowsocks等需要的软件</p>
 
 <p>安装shadowsocks，安装shadowsocks，安装shadowsocks，重要的事件说三遍。现在，开发的技术文档被墙的越来越严重了，基本上不会翻墙的开发者是没有前途的，安装翻墙代理，不仅仅是为了google，查看技术文档，有时候还是为了解决vagrant的插件，和node，php，go等扩展的问题(做一个开发好难~)</p>
 
-<ol>
-<li>安装vagrant 和插件</li>
-</ol>
+<p>3 安装vagrant 和插件</p>
 
 <p>安装vagrant过程不多说，重要的是安装两个插件<a href="https://github.com/winnfsd/vagrant-winnfsd">Vagrant WinNFSd</a> 和<a href="https://github.com/tmatilai/vagrant-proxyconf">vagrant-proxyconf</a>,安装之前，需要先设置代理参数，由于使用gitbash，所有需要先设置两个环境变量http_proxy和https_proxy</p>
 
