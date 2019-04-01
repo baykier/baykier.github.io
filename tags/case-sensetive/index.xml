@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Case Sensetive on Baykier的鱼塘</title>
-    <link>https://i90.xyz/tags/case-sensetive/index.xml</link>
+    <link>http://i90.xyz/tags/case-sensetive/index.xml</link>
     <description>Recent content in Case Sensetive on Baykier的鱼塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Written by Baykier</copyright>
-    <atom:link href="https://i90.xyz/tags/case-sensetive/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://i90.xyz/tags/case-sensetive/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>vagrant windows 大小写问题解决</title>
-      <link>https://i90.xyz/post/vagrant-win-case-sensetive/</link>
+      <link>http://i90.xyz/post/vagrant-win-case-sensetive/</link>
       <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://i90.xyz/post/vagrant-win-case-sensetive/</guid>
+      <guid>http://i90.xyz/post/vagrant-win-case-sensetive/</guid>
       <description>
 
 &lt;h2 id=&#34;vagrant-windows-大小写问题解决&#34;&gt;vagrant windows 大小写问题解决&lt;/h2&gt;
