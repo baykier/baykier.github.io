@@ -2,43 +2,119 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Php on Baykier的鱼塘</title>
-    <link>https://baykier.github.io/tags/php/</link>
+    <link>https://i90.xyz/tags/php/index.xml</link>
     <description>Recent content in Php on Baykier的鱼塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 30 Aug 2017 10:31:22 +0000</lastBuildDate>
-    
-	<atom:link href="https://baykier.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
-    
+    <copyright>Written by Baykier</copyright>
+    <atom:link href="https://i90.xyz/tags/php/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>php扩展模块加载顺序</title>
-      <link>https://baykier.github.io/post/php_ext_load_order/</link>
+      <link>https://i90.xyz/post/php_ext_load_order/</link>
       <pubDate>Wed, 30 Aug 2017 10:31:22 +0000</pubDate>
       
-      <guid>https://baykier.github.io/post/php_ext_load_order/</guid>
-      <description> php扩展模块的加载顺序 为啥会有这个问题？ 今天在安装php的扩展apm的时候，文档写着必须在json扩展加载之后再加载apm模块,原文如下:
-Activate the extension in the php configuration by adding: extension=apm.so Note: APM depends on JSON, so the apm.so extension must be loaded after JSON!  那么php的扩展加载顺序是怎么的? 按照php手册上面的说明，php扩展加载是写在php.ini文件中配置的，而php的配置文件是顺序解析的，这说明除了默认内核扩展，php的其他扩展模块 的加载顺序就是php.ini中的先后顺序，这是针对php.ini中的配置。对于ubuntu来说，php的扩展配置是单独放置在额外的配置目录，每一个扩展加载都是 一个配置文件，类似nginx的站点配置，以ubuntu-16.04-LTS为例：
-如果我们要安装php的curl扩展:
-sudo apt update &amp;amp;&amp;amp; sudo apt install php7.0-curl  最终会在php的扩展目录安装curl.so（/usr/lib/php/20151012/）,同时会在php的mods_available目录新增配置文件(curl.ini),这时候，php的 curl扩展还没有加载，需要将curl.ini软连接到/etc/php/7.0/fpm/conf.d/，重启php的fpm才会生效
-php扩展配置目录 php的fpm扩展加载目录 那么问题来了，如果以这种方式加载php的扩展，扩展的加载顺序如何呢？
-答案就是安装配置文件目录的文件自然排序顺序加载的.至于为什么，看了php的扩展加载目录前面的那个数字就明白了。
-相关阅读  保证PHP扩展的依赖关系 php的安装与配置  </description>
+      <guid>https://i90.xyz/post/php_ext_load_order/</guid>
+      <description>
+
+&lt;h2 id=&#34;php扩展模块的加载顺序&#34;&gt;php扩展模块的加载顺序&lt;/h2&gt;
+
+&lt;h3 id=&#34;为啥会有这个问题&#34;&gt;为啥会有这个问题？&lt;/h3&gt;
+
+&lt;p&gt;今天在安装php的扩展&lt;a href=&#34;http://pecl.php.net/package/APM&#34;&gt;apm&lt;/a&gt;的时候，文档写着必须在json扩展加载之后再加载apm模块,原文如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Activate the extension in the php configuration by adding:
+
+extension=apm.so
+Note: APM depends on JSON, so the apm.so extension must be loaded after JSON!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;那么php的扩展加载顺序是怎么的&#34;&gt;那么php的扩展加载顺序是怎么的?&lt;/h3&gt;
+
+&lt;p&gt;按照php手册上面的说明，php扩展加载是写在php.ini文件中配置的，而php的配置文件是顺序解析的，这说明除了默认内核扩展，php的其他扩展模块
+的加载顺序就是php.ini中的先后顺序，这是针对php.ini中的配置。对于ubuntu来说，php的扩展配置是单独放置在额外的配置目录，每一个扩展加载都是
+一个配置文件，类似&lt;a href=&#34;http://nginx.org/&#34;&gt;nginx&lt;/a&gt;的站点配置，以ubuntu-16.04-LTS为例：&lt;/p&gt;
+
+&lt;p&gt;如果我们要安装php的curl扩展:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt update &amp;amp;&amp;amp; sudo apt install php7.0-curl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最终会在php的扩展目录安装curl.so（/usr/lib/php/20151012/）,同时会在php的mods_available目录新增配置文件(curl.ini),这时候，php的
+curl扩展还没有加载，需要将&lt;code&gt;curl.ini&lt;/code&gt;软连接到&lt;code&gt;/etc/php/7.0/fpm/conf.d/&lt;/code&gt;，重启php的fpm才会生效&lt;/p&gt;
+
+&lt;h4 id=&#34;php扩展配置目录&#34;&gt;php扩展配置目录&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&#34;../../images/ubuntu_php_7.0_mods_available.png&#34; alt=&#34;php扩展配置目录&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;php的fpm扩展加载目录&#34;&gt;php的fpm扩展加载目录&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&#34;../../images/ubuntu_php_7.0_fpm_conf.d.png&#34; alt=&#34;php的fpm扩展加载目录&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;那么问题来了，如果以这种方式加载php的扩展，扩展的加载顺序如何呢？&lt;/p&gt;
+
+&lt;p&gt;答案就是安装配置文件目录的&lt;code&gt;文件自然排序&lt;/code&gt;顺序加载的.至于为什么，看了php的扩展加载目录前面的那个数字就明白了。&lt;/p&gt;
+
+&lt;h3 id=&#34;相关阅读&#34;&gt;相关阅读&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.laruence.com/2009/08/18/1042.html&#34;&gt;保证PHP扩展的依赖关系&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://php.net/manual/zh/install.php&#34;&gt;php的安装与配置&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
       <title>php file_get_contents() 函数代理设置</title>
-      <link>https://baykier.github.io/post/php_proxy_file_get_contents/</link>
+      <link>https://i90.xyz/post/php_proxy_file_get_contents/</link>
       <pubDate>Wed, 21 Jun 2017 01:42:02 +0000</pubDate>
       
-      <guid>https://baykier.github.io/post/php_proxy_file_get_contents/</guid>
-      <description>php file_get_contents() 函数代理设置 遇到的问题 昨天在使用file_get_contents()函数抓取图片内容的时候，出现超时的情况，而且图片无法获取到 据猜测，是网络的问题，有可能被GFW河蟹了，于是登上我的服务器测试一下，发现在服务器可以正常打开。 所以想到了如何给file_get_contents()函数设置代理,记录下来
-file_get_contents()代理设置 下面摘自file_get_content()的php官方手册
-string file_get_contents ( string $filename [, bool $use_include_path = false [, resource $context [, int $offset = 0 [, int $maxlen ]]]] )  其中，第三个参数context就是一个上下文资源参数，可以使用stream_context_create() 来创建
-具体代码如下:
-$context = stream_context_create(array( &#39;http&#39; =&amp;gt; array( &#39;proxy&#39; =&amp;gt; &#39;[tcp|udp]&amp;lt;proxy ip&amp;gt;:&amp;lt;proxy port&amp;gt;&#39;, &#39;request_fulluri&#39; =&amp;gt; true, ), )); //下面是简单的测试 $url = &#39;froyo.cc&#39;; $content = file_get_contents($url,false,$context); echo $content;  相关参考 使用strea_context_create()函数的库很多，比如Guzzle
-1.php stream
-2.理解php的流</description>
+      <guid>https://i90.xyz/post/php_proxy_file_get_contents/</guid>
+      <description>
+
+&lt;h2 id=&#34;php-file-get-contents-函数代理设置&#34;&gt;php file_get_contents() 函数代理设置&lt;/h2&gt;
+
+&lt;h3 id=&#34;遇到的问题&#34;&gt;遇到的问题&lt;/h3&gt;
+
+&lt;p&gt;昨天在使用file_get_contents()函数抓取图片内容的时候，出现超时的情况，而且图片无法获取到
+据猜测，是网络的问题，有可能被GFW河蟹了，于是登上我的服务器测试一下，发现在服务器可以正常打开。
+所以想到了如何给file_get_contents()函数设置代理,记录下来&lt;/p&gt;
+
+&lt;h3 id=&#34;file-get-contents-代理设置&#34;&gt;file_get_contents()代理设置&lt;/h3&gt;
+
+&lt;p&gt;下面摘自file_get_content()的&lt;a href=&#34;http://php.net/manual/en/function.file-get-contents.php&#34;&gt;php官方手册&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;string file_get_contents ( string $filename [, bool $use_include_path = false [, resource $context [, int $offset = 0 [, int $maxlen ]]]] )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中，第三个参数&lt;strong&gt;context&lt;/strong&gt;就是一个上下文资源参数，可以使用&lt;a href=&#34;http://php.net/manual/en/function.stream-context-create.php&#34;&gt;stream_context_create()&lt;/a&gt;
+来创建&lt;/p&gt;
+
+&lt;p&gt;具体代码如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$context = stream_context_create(array(
+	&#39;http&#39; =&amp;gt; array(
+		&#39;proxy&#39; =&amp;gt; &#39;[tcp|udp]&amp;lt;proxy ip&amp;gt;:&amp;lt;proxy port&amp;gt;&#39;,
+		&#39;request_fulluri&#39; =&amp;gt; true,
+	),
+));
+
+//下面是简单的测试
+
+$url = &#39;froyo.cc&#39;;
+$content = file_get_contents($url,false,$context);
+echo $content;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;相关参考&#34;&gt;相关参考&lt;/h3&gt;
+
+&lt;p&gt;使用strea_context_create()函数的库很多，比如&lt;a href=&#34;https://github.com/guzzle/guzzle&#34;&gt;Guzzle&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;1.&lt;a href=&#34;http://php.net/manual/zh/book.stream.php&#34;&gt;php stream&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2.&lt;a href=&#34;https://www.oschina.net/translate/understanding-streams-in-php&#34;&gt;理解php的流&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

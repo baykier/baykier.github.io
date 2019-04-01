@@ -2,24 +2,154 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mongodb on Baykier的鱼塘</title>
-    <link>https://baykier.github.io/tags/mongodb/</link>
+    <link>https://i90.xyz/tags/mongodb/index.xml</link>
     <description>Recent content in Mongodb on Baykier的鱼塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 19 Apr 2018 00:00:00 +0800</lastBuildDate>
-    
-	<atom:link href="https://baykier.github.io/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
-    
+    <copyright>Written by Baykier</copyright>
+    <atom:link href="https://i90.xyz/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>mongodb如何在aggregate中进行distinct操作 </title>
-      <link>https://baykier.github.io/post/mongo-aggregate/</link>
-      <pubDate>Thu, 19 Apr 2018 00:00:00 +0800</pubDate>
+      <link>https://i90.xyz/post/mongo-aggregate/</link>
+      <pubDate>Thu, 19 Apr 2018 10:00:36 +0800</pubDate>
       
-      <guid>https://baykier.github.io/post/mongo-aggregate/</guid>
-      <description>mongodb如何在aggregate中进行distinct操作 mongodb 在聚合操作中，经常需要同传统的sql一样，进行诸如 sum(distinct) ,group by having 操作，那么等价的mongodb是啥呢？
-场景描述 现在需要用mongodb来记录业务员的外呼记录，使用三个表，结构分别如下：(实际情况可能有出入，抽出主要的字段说明)
- 业务员 admin_user     字段 类型 含义及说明     id int 业务员id   name string 姓名     客户表 user     字段 类型 含义及说明     uid int 客户id   name string 姓名     关联表 call_log     字段 类型 含义及说明     auid int 业务员id   uid int 客户id   ctime int 呼叫时间    那么问题来了，如何找出具体某一天的业务员呼叫的客户数量？ 这时候，如果简单的用mysql来处理，简单的一条sql就行了:</description>
+      <guid>https://i90.xyz/post/mongo-aggregate/</guid>
+      <description>
+
+&lt;h2 id=&#34;mongodb如何在aggregate中进行distinct操作&#34;&gt;mongodb如何在aggregate中进行distinct操作&lt;/h2&gt;
+
+&lt;p&gt;mongodb 在聚合操作中，经常需要同传统的sql一样，进行诸如 sum(distinct) ,group by having 操作，那么等价的mongodb是啥呢？&lt;/p&gt;
+
+&lt;h3 id=&#34;场景描述&#34;&gt;场景描述&lt;/h3&gt;
+
+&lt;p&gt;现在需要用mongodb来记录业务员的外呼记录，使用三个表，结构分别如下：(实际情况可能有出入，抽出主要的字段说明)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;业务员 admin_user&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;字段&lt;/th&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;含义及说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;id&lt;/td&gt;
+&lt;td&gt;int&lt;/td&gt;
+&lt;td&gt;业务员id&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;name&lt;/td&gt;
+&lt;td&gt;string&lt;/td&gt;
+&lt;td&gt;姓名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;客户表 user&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;字段&lt;/th&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;含义及说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;uid&lt;/td&gt;
+&lt;td&gt;int&lt;/td&gt;
+&lt;td&gt;客户id&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;name&lt;/td&gt;
+&lt;td&gt;string&lt;/td&gt;
+&lt;td&gt;姓名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;关联表 call_log&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;字段&lt;/th&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;含义及说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;auid&lt;/td&gt;
+&lt;td&gt;int&lt;/td&gt;
+&lt;td&gt;业务员id&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;uid&lt;/td&gt;
+&lt;td&gt;int&lt;/td&gt;
+&lt;td&gt;客户id&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ctime&lt;/td&gt;
+&lt;td&gt;int&lt;/td&gt;
+&lt;td&gt;呼叫时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;那么问题来了-如何找出具体某一天的业务员呼叫的客户数量&#34;&gt;那么问题来了，如何找出具体某一天的业务员呼叫的客户数量？&lt;/h3&gt;
+
+&lt;p&gt;这时候，如果简单的用mysql来处理，简单的一条sql就行了:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SELECT auid,COUNT(DISTINCT uid) AS call_count FROM call_log WHERE ctime &amp;gt;=&amp;lt;时间戳&amp;gt; AND ctime &amp;lt;= &amp;lt;时间戳&amp;gt; GROUP BY auid
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;但是用mongodb来处理，我找了半天，也没发现有distinct对等的函数，从stackoverflow上找到了答案，思路就是分两次组，第一次按auid，uid，第二次按auid，这样就会去重（一天可以呼叫同一个业务员多次)&lt;/p&gt;
+
+&lt;p&gt;代码如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+db.campaigns.aggregate([
+    { &amp;quot;$match&amp;quot;: { &amp;quot;ctime&amp;quot;: { &amp;quot;$gte&amp;quot;: &amp;lt;时间戳&amp;gt;，&amp;quot;$lte&amp;quot;:&amp;lt;时间戳&amp;gt; }}},
+    { &amp;quot;$group&amp;quot;: {
+        &amp;quot;_id&amp;quot;: {
+            &amp;quot;auid&amp;quot;: &amp;quot;$auid&amp;quot;,
+            &amp;quot;uid&amp;quot;: &amp;quot;$uid&amp;quot;
+        },
+        &amp;quot;count&amp;quot;: { &amp;quot;$sum&amp;quot;: 1 }
+    }},
+    { &amp;quot;$group&amp;quot;: {
+        &amp;quot;_id&amp;quot;: &#39;$_id.auid&#39;,
+        &amp;quot;count&amp;quot;: { &amp;quot;$sum&amp;quot;: 1 }
+    }}
+])
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;参考链接&#34;&gt;　参考链接&lt;/h3&gt;
+
+&lt;p&gt;－　&lt;a href=&#34;https://stackoverflow.com/questions/24761266/select-group-by-count-and-distinct-count-in-same-mongodb-query?utm_medium=organic&amp;amp;utm_source=google_rich_qa&amp;amp;utm_campaign=google_rich_qa&#34;&gt;mongodb group distinct&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

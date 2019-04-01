@@ -2,42 +2,162 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vagrant on Baykier的鱼塘</title>
-    <link>https://baykier.github.io/tags/vagrant/</link>
+    <link>https://i90.xyz/tags/vagrant/index.xml</link>
     <description>Recent content in Vagrant on Baykier的鱼塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 01 Mar 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://baykier.github.io/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
-    
+    <copyright>Written by Baykier</copyright>
+    <atom:link href="https://i90.xyz/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>vagrant windows 大小写问题解决</title>
-      <link>https://baykier.github.io/post/vagrant-win-case-sensetive/</link>
+      <link>https://i90.xyz/post/vagrant-win-case-sensetive/</link>
       <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://baykier.github.io/post/vagrant-win-case-sensetive/</guid>
-      <description> vagrant windows 大小写问题解决 开发环境使用vagrant，以为这样能很好的解决开发中的坑，没想到还是中了不区分大小写的问题的坑，记录下来，防止踩坑
-开发环境: host windwos 10 虚拟机: guest debian8 出现的问题： 工作中使用php开发的cli脚本，需要到线上服务器执行，本地写完了，执行后返回预期的结果，开开心心的到服务器一运行，发现居然没反应(ps 和框架的异常机制也有问题)， 找了半天才发现是文件大小写的问题，由于使用vagrant在linux环境开发，就没有意识到这一点（默哀三秒。。。）然后查找相关资料，才发现使用virtualbox 默认挂载的目录是不区文件分大小写的 在guest中同样也是不区分，最开始的解决思路就是看看php能不能解决这个问题（让php跨平台的支持文件大小写）后来发现php底层是依赖与操作系统的，php本身无法解决，于是重点来了： 如何让windows+virtualbox中的vagrant支持区分文件大小写
-vagrant在windows+virtualbox 支持文件区分大小写 要想让vagrant 在windows host中支持文件大小写，需求通过安装插件来支持:nfs
- 打开cmd命令行或者git bash:  vagrant plugin install vagrant-winnfsd  等执行完成后进行下一步
- 在Vagrantfile添加 挂载参数 type:&amp;ldquo;nfs&amp;rdquo;  config.vm.synced_folder &amp;quot;./project&amp;quot;, &amp;quot;/project&amp;quot;, type:&amp;quot;nfs&amp;quot;   添加private_network支持(插件依赖 https://github.com/winnfsd/vagrant-winnfsd#activate-nfs-for-vagrant):  config.vm.network &amp;quot;private_network&amp;quot;, type: &amp;quot;dhcp&amp;quot;   vagrant reload虚拟机  vagrant reload  ok！ 到这一步，问题算是解决了，让我们愉快的玩耍吧 :) 相关链接  https://github.com/winnfsd/vagrant-winnfsd#activate-nfs-for-vagrant
- https://stackoverflow.com/questions/26483867/how-to-handle-files-in-case-sensitive-way-in-vagrant-on-windows-host
-  </description>
+      <guid>https://i90.xyz/post/vagrant-win-case-sensetive/</guid>
+      <description>
+
+&lt;h2 id=&#34;vagrant-windows-大小写问题解决&#34;&gt;vagrant windows 大小写问题解决&lt;/h2&gt;
+
+&lt;p&gt;开发环境使用vagrant，以为这样能很好的解决开发中的坑，没想到还是中了不区分大小写的问题的坑，记录下来，防止踩坑&lt;/p&gt;
+
+&lt;p&gt;开发环境: host windwos 10
+虚拟机: guest debian8
+出现的问题： 工作中使用php开发的cli脚本，需要到线上服务器执行，本地写完了，执行后返回预期的结果，开开心心的到服务器一运行，发现居然没反应(ps 和框架的异常机制也有问题)，
+找了半天才发现是文件大小写的问题，由于使用vagrant在linux环境开发，就没有意识到这一点（默哀三秒。。。）然后查找相关资料，才发现使用virtualbox 默认挂载的目录是不区文件分大小写的
+在guest中同样也是不区分，最开始的解决思路就是看看php能不能解决这个问题（让php跨平台的支持文件大小写）后来发现php底层是依赖与操作系统的，php本身无法解决，于是重点来了：
+如何让windows+virtualbox中的vagrant支持区分文件大小写&lt;/p&gt;
+
+&lt;h3 id=&#34;vagrant在windows-virtualbox-支持文件区分大小写&#34;&gt;vagrant在windows+virtualbox 支持文件区分大小写&lt;/h3&gt;
+
+&lt;p&gt;要想让vagrant 在windows host中支持文件大小写，需求通过安装插件来支持:nfs&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;打开cmd命令行或者git bash:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;vagrant plugin install vagrant-winnfsd
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;等执行完成后进行下一步&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在Vagrantfile添加 挂载参数 type:&amp;ldquo;nfs&amp;rdquo;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;config.vm.synced_folder &amp;quot;./project&amp;quot;, &amp;quot;/project&amp;quot;, type:&amp;quot;nfs&amp;quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;添加private_network支持(插件依赖 &lt;a href=&#34;https://github.com/winnfsd/vagrant-winnfsd#activate-nfs-for-vagrant):&#34;&gt;https://github.com/winnfsd/vagrant-winnfsd#activate-nfs-for-vagrant):&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;config.vm.network &amp;quot;private_network&amp;quot;, type: &amp;quot;dhcp&amp;quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;vagrant reload虚拟机&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;vagrant reload
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;ok-到这一步-问题算是解决了-让我们愉快的玩耍吧&#34;&gt;ok！ 到这一步，问题算是解决了，让我们愉快的玩耍吧 :)&lt;/h3&gt;
+
+&lt;h3 id=&#34;相关链接&#34;&gt;相关链接&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/winnfsd/vagrant-winnfsd#activate-nfs-for-vagrant&#34;&gt;https://github.com/winnfsd/vagrant-winnfsd#activate-nfs-for-vagrant&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/26483867/how-to-handle-files-in-case-sensitive-way-in-vagrant-on-windows-host&#34;&gt;https://stackoverflow.com/questions/26483867/how-to-handle-files-in-case-sensitive-way-in-vagrant-on-windows-host&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
       <title>ubuntu 代理设置</title>
-      <link>https://baykier.github.io/post/vagrant_proxy/</link>
+      <link>https://i90.xyz/post/vagrant_proxy/</link>
       <pubDate>Fri, 02 Jun 2017 11:39:36 +0800</pubDate>
       
-      <guid>https://baykier.github.io/post/vagrant_proxy/</guid>
-      <description>vagrant开发机代理设置 在学习工作中使用vagrant作为开发环境已经有很长一段时间了，使用ubuntu 作为开发系统 在使用中发现，即使修改了apt的source.list源文件，在面对一些开发中需要的软件工具的时候，不可 避免的还是会遇到卡顿的问题，于是就查了一下资料，修改apt的proxy代理，来加快速度，最后又把git的也修改了
-apt git npm composer 等使用遇到的问题 apt git npm composer 由于GFW的存在，对于国内的程序员来说，经常卡住不动，无法使用，即使有镜像源，但由于存在 同步更新的问题，不能及时解决，所以需要进行proxy设置
-设置proxy 1.git
-	git config --global http.proxy &amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt; git config --global https.proxy &amp;lt;your proxyip&amp;gt;:&amp;lt;your proxy port&amp;gt; # socks git config --global http.proxy socks5h://&amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt; git config --global https.proxy socks5h://&amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt;  参考git proxy setting
-2.apt
- sudo echo &#39;Acquire::http::Proxy &amp;quot;http://&amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt;&amp;quot;;&#39; &amp;gt;&amp;gt; /etc/apt/apt.</description>
+      <guid>https://i90.xyz/post/vagrant_proxy/</guid>
+      <description>
+
+&lt;h1 id=&#34;vagrant开发机代理设置&#34;&gt;vagrant开发机代理设置&lt;/h1&gt;
+
+&lt;p&gt;在学习工作中使用&lt;a href=&#34;https://www.vagrantup.com/&#34;&gt;vagrant&lt;/a&gt;作为开发环境已经有很长一段时间了，使用ubuntu
+作为开发系统 在使用中发现，即使修改了apt的source.list源文件，在面对一些开发中需要的软件工具的时候，不可
+避免的还是会遇到卡顿的问题，于是就查了一下资料，修改apt的proxy代理，来加快速度，最后又把git的也修改了&lt;/p&gt;
+
+&lt;h2 id=&#34;apt-git-npm-composer-等使用遇到的问题&#34;&gt;apt git npm composer 等使用遇到的问题&lt;/h2&gt;
+
+&lt;p&gt;apt git npm composer 由于GFW的存在，对于国内的程序员来说，经常卡住不动，无法使用，即使有镜像源，但由于存在
+同步更新的问题，不能及时解决，所以需要进行proxy设置&lt;/p&gt;
+
+&lt;h2 id=&#34;设置proxy&#34;&gt;设置proxy&lt;/h2&gt;
+
+&lt;p&gt;1.git&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	git config --global http.proxy &amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt;
+	git config --global https.proxy &amp;lt;your proxyip&amp;gt;:&amp;lt;your proxy port&amp;gt;
+	
+	# socks
+	git config --global http.proxy socks5h://&amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt;
+	git config --global https.proxy socks5h://&amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;参考&lt;a href=&#34;https://gist.github.com/laispace/666dd7b27e9116faece6&#34;&gt;git proxy setting&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2.apt&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; sudo echo &#39;Acquire::http::Proxy &amp;quot;http://&amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt;&amp;quot;;&#39; &amp;gt;&amp;gt; /etc/apt/apt.conf
+ sudo apt update 
+ #下面可以体验飞一般的感觉了
+ sudo apt install &amp;lt;some packages&amp;gt;
+ ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;参考&lt;a href=&#34;https://askubuntu.com/questions/257290/configure-proxy-for-apt&#34;&gt;apt proxy setting&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;3.npm&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; npm config set proxy http://&amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt;
+ npm config set proxy-https https://&amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;参考&lt;a href=&#34;https://stackoverflow.com/questions/25660936/using-npm-behind-corporate-proxy-pac&#34;&gt;npm proxy setting&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;4.composer&lt;/p&gt;
+
+&lt;p&gt;方法一:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;composer config -g repo.packagist composer https://packagist.phpcomposer.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;参考&lt;a href=&#34;https://pkg.phpcomposer.com/&#34;&gt;composer中国镜像&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;方法二:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export HTTP_PROXY=http://&amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt;
+export HTTPS_PROXY=http://&amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面这种方法临时用一下，每次登录terminal之后需要重新设置，如果不想每次设置，可以保存在&lt;code&gt;~/.profile&lt;/code&gt;中&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;# proxy setting&amp;quot; &amp;gt;&amp;gt; ~/.profile
+echo &amp;quot;export HTTP_PROXY=&#39;http://&amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt;&#39;&amp;quot; &amp;gt;&amp;gt; ~/.profile
+echo &amp;quot;export HTTPS_PROXY=&#39;https://&amp;lt;your proxy ip&amp;gt;:&amp;lt;your proxy port&amp;gt;&#39;&amp;quot; &amp;gt;&amp;gt; ~/.profile
+source ~/.profile
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;实际效果&#34;&gt;实际效果&lt;/h2&gt;
+
+&lt;p&gt;git npm apt composer 快了不是一点点 :) !&lt;/p&gt;
+</description>
     </item>
     
   </channel>
