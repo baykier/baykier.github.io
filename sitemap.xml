@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://i90.xyz/post/flutter_with_vagrant/</loc>
+    <lastmod>2019-07-13T10:00:36+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://i90.xyz/post/mongo-aggregate/</loc>
     <lastmod>2018-04-19T10:00:36+08:00</lastmod>
   </url>
@@ -74,7 +79,7 @@
   
   <url>
     <loc>http://i90.xyz/</loc>
-    <lastmod>2018-04-19T10:00:36+08:00</lastmod>
+    <lastmod>2019-07-13T10:00:36+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -128,7 +133,7 @@
   
   <url>
     <loc>http://i90.xyz/post/</loc>
-    <lastmod>2018-04-19T10:00:36+08:00</lastmod>
+    <lastmod>2019-07-13T10:00:36+08:00</lastmod>
     <priority>0</priority>
   </url>
   

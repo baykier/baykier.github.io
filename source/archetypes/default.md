@@ -1,5 +1,5 @@
 +++
-title = ""
+title = "{{ title }}"
 tags = []
-date = {{ dateFormat "2006-01-02" .Date }}
+date = "2006-01-02"
 +++
