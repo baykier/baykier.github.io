@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Php on Baykier的鱼塘</title>
-    <link>http://i90.xyz/tags/php/index.xml</link>
+    <link>https://baykier.github.io/tags/php/index.xml</link>
     <description>Recent content in Php on Baykier的鱼塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Written by Baykier</copyright>
-    <atom:link href="http://i90.xyz/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://baykier.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>php扩展模块加载顺序</title>
-      <link>http://i90.xyz/post/php_ext_load_order/</link>
+      <link>https://baykier.github.io/post/php_ext_load_order/</link>
       <pubDate>Wed, 30 Aug 2017 10:31:22 +0000</pubDate>
       
-      <guid>http://i90.xyz/post/php_ext_load_order/</guid>
+      <guid>https://baykier.github.io/post/php_ext_load_order/</guid>
       <description>
 
 &lt;h2 id=&#34;php扩展模块的加载顺序&#34;&gt;php扩展模块的加载顺序&lt;/h2&gt;
@@ -66,10 +66,10 @@ curl扩展还没有加载，需要将&lt;code&gt;curl.ini&lt;/code&gt;软连接�
     
     <item>
       <title>php file_get_contents() 函数代理设置</title>
-      <link>http://i90.xyz/post/php_proxy_file_get_contents/</link>
+      <link>https://baykier.github.io/post/php_proxy_file_get_contents/</link>
       <pubDate>Wed, 21 Jun 2017 01:42:02 +0000</pubDate>
       
-      <guid>http://i90.xyz/post/php_proxy_file_get_contents/</guid>
+      <guid>https://baykier.github.io/post/php_proxy_file_get_contents/</guid>
       <description>
 
 &lt;h2 id=&#34;php-file-get-contents-函数代理设置&#34;&gt;php file_get_contents() 函数代理设置&lt;/h2&gt;

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Openssl on Baykier的鱼塘</title>
-    <link>http://i90.xyz/tags/openssl/index.xml</link>
+    <link>https://baykier.github.io/tags/openssl/index.xml</link>
     <description>Recent content in Openssl on Baykier的鱼塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Written by Baykier</copyright>
-    <atom:link href="http://i90.xyz/tags/openssl/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://baykier.github.io/tags/openssl/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>nginx ssl 证书配置</title>
-      <link>http://i90.xyz/post/nginx_ssl/</link>
+      <link>https://baykier.github.io/post/nginx_ssl/</link>
       <pubDate>Tue, 29 Aug 2017 05:23:25 +0000</pubDate>
       
-      <guid>http://i90.xyz/post/nginx_ssl/</guid>
+      <guid>https://baykier.github.io/post/nginx_ssl/</guid>
       <description>
 
 &lt;h2 id=&#34;nginx-ssl证书配置&#34;&gt;nginx ssl证书配置&lt;/h2&gt;

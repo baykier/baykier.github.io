@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>部署 on Baykier的鱼塘</title>
-    <link>http://i90.xyz/tags/%E9%83%A8%E7%BD%B2/index.xml</link>
+    <link>https://baykier.github.io/tags/%E9%83%A8%E7%BD%B2/index.xml</link>
     <description>Recent content in 部署 on Baykier的鱼塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Written by Baykier</copyright>
-    <atom:link href="http://i90.xyz/tags/%E9%83%A8%E7%BD%B2/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://baykier.github.io/tags/%E9%83%A8%E7%BD%B2/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>homepage 的自动部署</title>
-      <link>http://i90.xyz/post/auto_deploy/</link>
+      <link>https://baykier.github.io/post/auto_deploy/</link>
       <pubDate>Mon, 05 Jun 2017 10:00:36 +0800</pubDate>
       
-      <guid>http://i90.xyz/post/auto_deploy/</guid>
+      <guid>https://baykier.github.io/post/auto_deploy/</guid>
       <description>
 
 &lt;h1 id=&#34;homepage自动部署&#34;&gt;homepage自动部署&lt;/h1&gt;

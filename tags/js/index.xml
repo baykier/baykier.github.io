@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Js on Baykier的鱼塘</title>
-    <link>http://i90.xyz/tags/js/index.xml</link>
+    <link>https://baykier.github.io/tags/js/index.xml</link>
     <description>Recent content in Js on Baykier的鱼塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Written by Baykier</copyright>
-    <atom:link href="http://i90.xyz/tags/js/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://baykier.github.io/tags/js/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>JavaScript跨域访问控制问题</title>
-      <link>http://i90.xyz/post/js_cors/</link>
+      <link>https://baykier.github.io/post/js_cors/</link>
       <pubDate>Mon, 11 Sep 2017 08:50:38 +0000</pubDate>
       
-      <guid>http://i90.xyz/post/js_cors/</guid>
+      <guid>https://baykier.github.io/post/js_cors/</guid>
       <description>
 
 &lt;h2 id=&#34;javascript跨域访问控制问题&#34;&gt;JavaScript跨域访问控制问题&lt;/h2&gt;
