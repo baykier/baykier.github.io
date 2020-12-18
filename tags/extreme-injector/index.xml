@@ -2,12 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Extreme Injector on Baykier的鱼塘</title>
-    <link>http://i90.xyz/tags/extreme-injector/index.xml</link>
+    <link>http://i90.xyz/tags/extreme-injector/</link>
     <description>Recent content in Extreme Injector on Baykier的鱼塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>Written by Baykier</copyright>
-    <atom:link href="http://i90.xyz/tags/extreme-injector/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Mar 2018 10:00:36 +0800</lastBuildDate>
+    
+	<atom:link href="http://i90.xyz/tags/extreme-injector/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>extreme injector 进程注入工具使用</title>
@@ -15,53 +17,9 @@
       <pubDate>Wed, 21 Mar 2018 10:00:36 +0800</pubDate>
       
       <guid>http://i90.xyz/post/extreme_injector_use/</guid>
-      <description>
-
-&lt;h2 id=&#34;extreme-injector-进程注入工具使用&#34;&gt;extreme injector 进程注入工具使用&lt;/h2&gt;
-
-&lt;p&gt;windows dll 注入是大部分游戏辅助的实现方式，这次来介绍使用最广泛的extreme injector&lt;/p&gt;
-
-&lt;h3 id=&#34;简介&#34;&gt;简介&lt;/h3&gt;
-
-&lt;p&gt;extreme injector 是一个非常强大和高级的dll注入工具，配有一个简单的GUI界面，使用c#编写
-&lt;img src=&#34;../../images/extreme_injector/01.png&#34; alt=&#34;&#34; /&gt;
-&lt;img src=&#34;../../images/extreme_injector/02.png&#34; alt=&#34;&#34; /&gt;
-&lt;img src=&#34;../../images/extreme_injector/03.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;它具有以下特性:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;多种外观和允许自定义GUI&lt;/li&gt;
-&lt;li&gt;进程列表选择或者桌面程序选择&lt;/li&gt;
-&lt;li&gt;多dll注入支持（并支持enable/disable选择）&lt;/li&gt;
-&lt;li&gt;自动开启注入&lt;/li&gt;
-&lt;li&gt;隐藏注入行为&lt;/li&gt;
-&lt;li&gt;dll抢占式注入&lt;/li&gt;
-&lt;li&gt;取消dll注入&lt;/li&gt;
-&lt;li&gt;多种注入方法（Standard, LdrLoadDll Stub, LdrpLoadDll Stub, Thread Hijacking and Manual Map）&lt;/li&gt;
-&lt;li&gt;支持拖拽操作&lt;/li&gt;
-&lt;li&gt;支持x64平台&lt;/li&gt;
-&lt;li&gt;Visual C++依赖库自动安装&lt;/li&gt;
-&lt;li&gt;注册后导出导出的功能函数&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;如何使用&#34;&gt;如何使用&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;下载并解压文件(&lt;a href=&#34;https://github.com/master131/ExtremeInjector&#34;&gt;github下载地址&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;运行&lt;strong&gt;Injector v3.exe&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;点击设置(setting)来开启选项 Start in Secure Mode 来避免被反欺诈引擎识别&lt;/li&gt;
-&lt;li&gt;点击select按钮来选择要注入的进程,可以选择正在运行的进程或者桌面中可执行文件的名字(以exe扩展)&lt;/li&gt;
-&lt;li&gt;点击inject完成&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;相关链接&#34;&gt;相关链接&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/master131/ExtremeInjector/wiki&#34;&gt;github wiki&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.unknowncheats.me/forum/general-programming-and-reversing/213038-extreme-injector-v3-7-a.html&#34;&gt;原文链接&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description> extreme injector 进程注入工具使用 windows dll 注入是大部分游戏辅助的实现方式，这次来介绍使用最广泛的extreme injector
+简介 extreme injector 是一个非常强大和高级的dll注入工具，配有一个简单的GUI界面，使用c#编写 它具有以下特性:
+ 多种外观和允许自定义GUI 进程列表选择或者桌面程序选择 多dll注入支持（并支持enable/disable选择） 自动开启注入 隐藏注入行为 dll抢占式注入 取消dll注入 多种注入方法（Standard, LdrLoadDll Stub, LdrpLoadDll Stub, Thread Hijacking and Manual Map） 支持拖拽操作 支持x64平台 Visual C++依赖库自动安装 注册后导出导出的功能函数  如何使用  下载并解压文件(github下载地址) 运行Injector v3.exe 点击设置(setting)来开启选项 Start in Secure Mode 来避免被反欺诈引擎识别 点击select按钮来选择要注入的进程,可以选择正在运行的进程或者桌面中可执行文件的名字(以exe扩展) 点击inject完成  相关链接  github wiki 原文链接  </description>
     </item>
     
   </channel>

@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>http://i90.xyz/post/flutter_with_vagrant/</loc>
     <lastmod>2019-07-13T10:00:36+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://i90.xyz/post/win-devlop-set/</loc>
+    <lastmod>2018-05-22T14:26:17+08:00</lastmod>
   </url>
   
   <url>
@@ -90,6 +96,11 @@
   </url>
   
   <url>
+    <loc>http://i90.xyz/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://i90.xyz/tags/distinct/</loc>
     <lastmod>2018-04-19T10:00:36+08:00</lastmod>
     <priority>0</priority>
@@ -145,6 +156,7 @@
   
   <url>
     <loc>http://i90.xyz/tags/</loc>
+    <lastmod>2018-04-19T10:00:36+08:00</lastmod>
     <priority>0</priority>
   </url>
   

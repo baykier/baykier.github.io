@@ -2,12 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Case Sensetive on Baykier的鱼塘</title>
-    <link>http://i90.xyz/tags/case-sensetive/index.xml</link>
+    <link>http://i90.xyz/tags/case-sensetive/</link>
     <description>Recent content in Case Sensetive on Baykier的鱼塘</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>Written by Baykier</copyright>
-    <atom:link href="http://i90.xyz/tags/case-sensetive/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://i90.xyz/tags/case-sensetive/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>vagrant windows 大小写问题解决</title>
@@ -15,67 +17,13 @@
       <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>http://i90.xyz/post/vagrant-win-case-sensetive/</guid>
-      <description>
-
-&lt;h2 id=&#34;vagrant-windows-大小写问题解决&#34;&gt;vagrant windows 大小写问题解决&lt;/h2&gt;
-
-&lt;p&gt;开发环境使用vagrant，以为这样能很好的解决开发中的坑，没想到还是中了不区分大小写的问题的坑，记录下来，防止踩坑&lt;/p&gt;
-
-&lt;p&gt;开发环境: host windwos 10
-虚拟机: guest debian8
-出现的问题： 工作中使用php开发的cli脚本，需要到线上服务器执行，本地写完了，执行后返回预期的结果，开开心心的到服务器一运行，发现居然没反应(ps 和框架的异常机制也有问题)，
-找了半天才发现是文件大小写的问题，由于使用vagrant在linux环境开发，就没有意识到这一点（默哀三秒。。。）然后查找相关资料，才发现使用virtualbox 默认挂载的目录是不区文件分大小写的
-在guest中同样也是不区分，最开始的解决思路就是看看php能不能解决这个问题（让php跨平台的支持文件大小写）后来发现php底层是依赖与操作系统的，php本身无法解决，于是重点来了：
-如何让windows+virtualbox中的vagrant支持区分文件大小写&lt;/p&gt;
-
-&lt;h3 id=&#34;vagrant在windows-virtualbox-支持文件区分大小写&#34;&gt;vagrant在windows+virtualbox 支持文件区分大小写&lt;/h3&gt;
-
-&lt;p&gt;要想让vagrant 在windows host中支持文件大小写，需求通过安装插件来支持:nfs&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;打开cmd命令行或者git bash:&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code&gt;vagrant plugin install vagrant-winnfsd
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;等执行完成后进行下一步&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;在Vagrantfile添加 挂载参数 type:&amp;ldquo;nfs&amp;rdquo;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code&gt;config.vm.synced_folder &amp;quot;./project&amp;quot;, &amp;quot;/project&amp;quot;, type:&amp;quot;nfs&amp;quot;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ol&gt;
-&lt;li&gt;添加private_network支持(插件依赖 &lt;a href=&#34;https://github.com/winnfsd/vagrant-winnfsd#activate-nfs-for-vagrant):&#34;&gt;https://github.com/winnfsd/vagrant-winnfsd#activate-nfs-for-vagrant):&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code&gt;config.vm.network &amp;quot;private_network&amp;quot;, type: &amp;quot;dhcp&amp;quot;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ol&gt;
-&lt;li&gt;vagrant reload虚拟机&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code&gt;vagrant reload
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;ok-到这一步-问题算是解决了-让我们愉快的玩耍吧&#34;&gt;ok！ 到这一步，问题算是解决了，让我们愉快的玩耍吧 :)&lt;/h3&gt;
-
-&lt;h3 id=&#34;相关链接&#34;&gt;相关链接&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/winnfsd/vagrant-winnfsd#activate-nfs-for-vagrant&#34;&gt;https://github.com/winnfsd/vagrant-winnfsd#activate-nfs-for-vagrant&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/26483867/how-to-handle-files-in-case-sensitive-way-in-vagrant-on-windows-host&#34;&gt;https://stackoverflow.com/questions/26483867/how-to-handle-files-in-case-sensitive-way-in-vagrant-on-windows-host&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description> vagrant windows 大小写问题解决 开发环境使用vagrant，以为这样能很好的解决开发中的坑，没想到还是中了不区分大小写的问题的坑，记录下来，防止踩坑
+开发环境: host windwos 10 虚拟机: guest debian8 出现的问题： 工作中使用php开发的cli脚本，需要到线上服务器执行，本地写完了，执行后返回预期的结果，开开心心的到服务器一运行，发现居然没反应(ps 和框架的异常机制也有问题)， 找了半天才发现是文件大小写的问题，由于使用vagrant在linux环境开发，就没有意识到这一点（默哀三秒。。。）然后查找相关资料，才发现使用virtualbox 默认挂载的目录是不区文件分大小写的 在guest中同样也是不区分，最开始的解决思路就是看看php能不能解决这个问题（让php跨平台的支持文件大小写）后来发现php底层是依赖与操作系统的，php本身无法解决，于是重点来了： 如何让windows+virtualbox中的vagrant支持区分文件大小写
+vagrant在windows+virtualbox 支持文件区分大小写 要想让vagrant 在windows host中支持文件大小写，需求通过安装插件来支持:nfs
+ 打开cmd命令行或者git bash:  vagrant plugin install vagrant-winnfsd  等执行完成后进行下一步
+ 在Vagrantfile添加 挂载参数 type:&amp;ldquo;nfs&amp;rdquo;  config.vm.synced_folder &amp;quot;./project&amp;quot;, &amp;quot;/project&amp;quot;, type:&amp;quot;nfs&amp;quot;   添加private_network支持(插件依赖 https://github.com/winnfsd/vagrant-winnfsd#activate-nfs-for-vagrant):  config.vm.network &amp;quot;private_network&amp;quot;, type: &amp;quot;dhcp&amp;quot;   vagrant reload虚拟机  vagrant reload  ok！ 到这一步，问题算是解决了，让我们愉快的玩耍吧 :) 相关链接  https://github.com/winnfsd/vagrant-winnfsd#activate-nfs-for-vagrant
+ https://stackoverflow.com/questions/26483867/how-to-handle-files-in-case-sensitive-way-in-vagrant-on-windows-host
+  </description>
     </item>
     
   </channel>
